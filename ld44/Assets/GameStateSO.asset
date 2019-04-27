@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec484393a58d0e419eaf7e1413bbcd8, type: 3}
+  m_Name: GameStateSO
+  m_EditorClassIdentifier: 
+  prefabMelee: {fileID: 3282875157504043101, guid: b93ee304ab6476c419837915ec707edf,
+    type: 3}
+  prefabBonus: {fileID: 7565345115362240572, guid: b49c0e2a8e34d914582a5172a866e3cd,
+    type: 3}
+  prefabBullet: {fileID: 8918065959105227453, guid: 38409a3d31b3ea643ae8ed36645b2c3c,
+    type: 3}
+  moneyCurrent: 500
+  sceneCurrent: 0
+  pauseBeforeWave: 1
+  pauseBeforeSpawnMin: 0.2
+  pauseBeforeSpawnMax: 0.9
+  mobsMaxScene: 25
+  mobsSpawnedScene: 0
+  mobsCurrentCounter: 0
+  currentWave: 0
+  mobsMeleeTestWave:
+  - 10
+  - 20
+  - 30
+  mobsRangeTestWave: []
+  mobsCreeperTestWave: []
+  jumpForce: 800
+  maxJumps: 2
+  walkForce: 0.2
+  dashMax: 2
+  dashTime: 0.1
+  dashSpeed: 25
