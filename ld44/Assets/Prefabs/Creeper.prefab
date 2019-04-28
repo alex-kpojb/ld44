@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2075550211963906519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8727746069333243937}
+  - component: {fileID: 8935296838743326208}
+  m_Layer: 0
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8727746069333243937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075550211963906519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7772940273729292674}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &8935296838743326208
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075550211963906519}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &3930472647995237791
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +70,7 @@ GameObject:
   - component: {fileID: 2025645124936177310}
   - component: {fileID: 4496873461995976859}
   - component: {fileID: 5947411772241931706}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Creeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,11 +86,12 @@ Transform:
   m_GameObject: {fileID: 3930472647995237791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 6245377118206371779}
   - {fileID: 4658626746960359056}
   - {fileID: 6378013280291172469}
+  - {fileID: 8727746069333243937}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -126,10 +184,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
   agroGO: {fileID: 7140486854649539857}
-  dmg: 40
   particleBoom: {fileID: 1511853530499797291}
   particleBlood: {fileID: 212201315502381176}
+  dmg: 40
+  speed: 0.05
   delayBeforeBoom: 1
+  agroRadius: 2
+  agroSpeed: 0.1
+  boomRadius: 5
+  boomForce: 2000
 --- !u!50 &5947411772241931706
 Rigidbody2D:
   serializedVersion: 4
@@ -150,7 +213,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &7140486854649539857
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +225,7 @@ GameObject:
   - component: {fileID: 6378013280291172469}
   - component: {fileID: 4721191848208832671}
   - component: {fileID: 8052589083056228937}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Agro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,12 +256,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2
 --- !u!114 &8052589083056228937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Particle System Enemy Blood
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593020940712239903, guid: 152ae6009ebf8df41a39ad1b760a46ff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5381512546232173165, guid: 152ae6009ebf8df41a39ad1b760a46ff,
         type: 3}
@@ -303,6 +371,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Particle System Boom
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121160732549340293, guid: 1adc53e253a408a47a2aac9b9e2f3e89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 425273486296169975, guid: 1adc53e253a408a47a2aac9b9e2f3e89,
         type: 3}

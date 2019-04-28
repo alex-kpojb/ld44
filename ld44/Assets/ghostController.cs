@@ -12,6 +12,8 @@ public class ghostController : MonoBehaviour
     public float speed = 4f;
     public float dmg = 20f;
 
+    bool isTriggered = false;
+
     GameObject player;
 
 
@@ -61,8 +63,9 @@ public class ghostController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Dash")
+        if (collision.tag == "Dash" & isTriggered == false)
         {
+            isTriggered = true;
             stateSO.moneyCurrent += dmg;
             stateSO.mobsCurrentCounter--;
             EmitParticle();

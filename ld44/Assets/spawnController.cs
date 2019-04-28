@@ -31,20 +31,18 @@ public class spawnController : MonoBehaviour
     {
         while (true)
         {
-
-            float pauseBeforeSpawnRandom = Random.Range(stateSO.pauseBeforeSpawnMin, stateSO.pauseBeforeSpawnMax);
-            yield return new WaitForSeconds(pauseBeforeSpawnRandom);
-
-            if (stateSO.mobsCurrentCounter < stateSO.mobsMaxScene)
+            if (stateSO.mobsCurrentCounter + 3 < stateSO.mobsMaxScene)
             {
-                if (stateSO.mobsSpawnedScene < stateSO.mobsMeleeTestWave[stateSO.currentWave])
-                {
-                    stateSO.mobsCurrentCounter++;
-                    stateSO.mobsSpawnedScene++;
-                    int spawnerRandomId = Random.Range(0, SpawnerPositions.Count);
-                    Instantiate(stateSO.prefabMelee, SpawnerPositions[spawnerRandomId], Quaternion.identity);
-                }
-                else
+                float pauseBeforeSpawnRandom = Random.Range(stateSO.pauseBeforeSpawnMin, stateSO.pauseBeforeSpawnMax);
+
+                yield return new WaitForSeconds(pauseBeforeSpawnRandom);
+                StartCoroutine(SpawnMewlee());
+                StartCoroutine(SpawnTurret());
+                StartCoroutine(SpawnCreeper());
+
+                if (stateSO.mobsMeleeSpawned >= stateSO.mobsMeleeTestWave[stateSO.currentWave]
+                    & stateSO.mobsMeleeSpawned >= stateSO.mobsTurretTestWave[stateSO.currentWave]
+                    & stateSO.mobsMeleeSpawned >= stateSO.mobsCreeperTestWave[stateSO.currentWave])
                 {
                     while (stateSO.mobsCurrentCounter > 0)
                         yield return null;
@@ -52,7 +50,9 @@ public class spawnController : MonoBehaviour
                     if (stateSO.currentWave < stateSO.mobsMeleeTestWave.Count - 1)
                     {
                         stateSO.mobsCurrentCounter = 0;
-                        stateSO.mobsSpawnedScene = 0;
+                        stateSO.mobsMeleeSpawned = 0;
+                        stateSO.mobsTurretSpawned = 0;
+                        stateSO.mobsCreeperSpawned = 0;
                         stateSO.currentWave++;
                         yield return new WaitForSeconds(stateSO.pauseBeforeWave);
                     }
@@ -62,6 +62,49 @@ public class spawnController : MonoBehaviour
                     }
                 }
             }
+            yield return null;
         }
+    }
+
+    IEnumerator SpawnMewlee()
+    {
+        float pauseBeforeSpawnRandom = Random.Range(stateSO.pauseBeforeSpawnMin, stateSO.pauseBeforeSpawnMax);
+        yield return new WaitForSeconds(pauseBeforeSpawnRandom);
+        if (stateSO.mobsMeleeSpawned < stateSO.mobsMeleeTestWave[stateSO.currentWave])
+        {
+            stateSO.mobsCurrentCounter++;
+            stateSO.mobsMeleeSpawned++;
+            int spawnerRandomId = Random.Range(0, SpawnerPositions.Count);
+            Instantiate(stateSO.prefabMelee, SpawnerPositions[spawnerRandomId], Quaternion.identity);
+        }
+        yield return null;
+    }
+
+    IEnumerator SpawnTurret()
+    {
+        float pauseBeforeSpawnRandom = Random.Range(stateSO.pauseBeforeSpawnMin, stateSO.pauseBeforeSpawnMax);
+        yield return new WaitForSeconds(pauseBeforeSpawnRandom);
+        if (stateSO.mobsTurretSpawned < stateSO.mobsTurretTestWave[stateSO.currentWave])
+        {
+            stateSO.mobsCurrentCounter++;
+            stateSO.mobsTurretSpawned++;
+            int spawnerRandomId = Random.Range(0, SpawnerPositions.Count);
+            Instantiate(stateSO.prefabTurret, SpawnerPositions[spawnerRandomId], Quaternion.identity);
+        }
+        yield return null;
+    }
+
+    IEnumerator SpawnCreeper()
+    {
+        float pauseBeforeSpawnRandom = Random.Range(stateSO.pauseBeforeSpawnMin, stateSO.pauseBeforeSpawnMax);
+        yield return new WaitForSeconds(pauseBeforeSpawnRandom);
+        if (stateSO.mobsCreeperSpawned < stateSO.mobsCreeperTestWave[stateSO.currentWave])
+        {
+            stateSO.mobsCurrentCounter++;
+            stateSO.mobsCreeperSpawned++;
+            int spawnerRandomId = Random.Range(0, SpawnerPositions.Count);
+            Instantiate(stateSO.prefabCreeper, SpawnerPositions[spawnerRandomId], Quaternion.identity);
+        }
+        yield return null;
     }
 }

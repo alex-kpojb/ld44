@@ -13,9 +13,12 @@ public class turretController : MonoBehaviour
     public Transform weaponGO;
 
     public float reloadDelay = 2.4f;
-    public float bulletSpeed = .15f;
+    //public float bulletSpeed = .15f;
+
+    bool isTriggered = false;
 
     Coroutine coroutine;
+
     void Start()
     {
         playerGO = FindObjectOfType<playerController>().gameObject.transform;
@@ -25,13 +28,14 @@ public class turretController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        weaponGO.right = playerGO.position - weaponGO.position;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Dash")
+        if (collision.gameObject.tag == "Dash" & isTriggered == false)
         {
+            isTriggered = true;
             StopCoroutine(coroutine);
             stateSO.moneyCurrent += dmg;
             stateSO.mobsCurrentCounter--;
@@ -47,7 +51,6 @@ public class turretController : MonoBehaviour
     {
         while (true)
         {
-            weaponGO.right = playerGO.position - weaponGO.position;
             yield return new WaitForSeconds(reloadDelay);
 
             Instantiate(stateSO.prefabBullet, transform.position, weaponGO.rotation);

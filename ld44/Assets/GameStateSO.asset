@@ -14,28 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabMelee: {fileID: 3282875157504043101, guid: b93ee304ab6476c419837915ec707edf,
     type: 3}
+  prefabTurret: {fileID: 1473239314283205887, guid: 2e178ca91b3582844a779100f1b026ea,
+    type: 3}
+  prefabCreeper: {fileID: 3930472647995237791, guid: 22ab8e416cd18a8409ab5a5f78b23f1a,
+    type: 3}
   prefabBonus: {fileID: 7565345115362240572, guid: b49c0e2a8e34d914582a5172a866e3cd,
     type: 3}
   prefabBullet: {fileID: 8918065959105227453, guid: 38409a3d31b3ea643ae8ed36645b2c3c,
     type: 3}
-  moneyCurrent: 500
+  moneyCurrent: 756
   sceneCurrent: 0
   pauseBeforeWave: 1
   pauseBeforeSpawnMin: 0.2
   pauseBeforeSpawnMax: 0.9
   mobsMaxScene: 25
-  mobsSpawnedScene: 0
-  mobsCurrentCounter: 0
-  currentWave: 0
+  mobsSpawnedScene: 50
+  mobsCurrentCounter: 3
+  currentWave: 2
   mobsMeleeTestWave:
   - 10
   - 20
   - 30
-  mobsRangeTestWave: []
-  mobsCreeperTestWave: []
-  jumpForce: 800
-  maxJumps: 2
+  mobsTurretTestWave:
+  - 2
+  - 5
+  - 20
+  mobsCreeperTestWave:
+  - 5
+  - 10
+  - 50
+  jumpForce: 900
+  maxJumps: 3
   walkForce: 0.2
   dashMax: 2
-  dashTime: 0.1
-  dashSpeed: 25
+  dashTime: 0.120000005
+  dashSpeed: 27

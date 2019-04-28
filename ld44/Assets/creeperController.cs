@@ -6,25 +6,85 @@ public class creeperController : MonoBehaviour
 {
     public GameStateSO stateSO;
     public GameObject agroGO;
-    public float dmg = 40;
     public ParticleSystem particleBoom;
     public ParticleSystem particleBlood;
 
+    public float dmg = 40;
+    public float speed = 0.05f;
     public float delayBeforeBoom = 1f;
+    public float agroRadius = 2f;
+    public float agroSpeed = 0.08f;
+    public float boomRadius = 5f;
+    public float boomForce = 2000f;
 
     GameObject player;
     SpriteRenderer spriteRenderer;
-    
+    Collider2D collider2D;
+
+    bool isKilled = false;
+    bool isTriggered = false;
+    bool isCounted = false;
+
+    Direction currentDirection;
+
+    enum Direction
+    {
+        Left,
+        Right,
+        Player
+    }
+
+    private void OnEnable()
+    {
+        speed = Random.Range(speed - 0.01f, speed + (0.05f * stateSO.currentWave));
+    }
     void Start()
     {
+        currentDirection = Direction.Right;
+
         player = FindObjectOfType<playerController>().gameObject;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2D = GetComponent<Collider2D>();
+
+        agroGO.GetComponent<CircleCollider2D>().radius = agroRadius;
     }
+
+
+    private void FixedUpdate()
+    {
+        if (currentDirection == Direction.Right)
+        {
+            if (Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(1.2f, -0.6f), LayerMask.GetMask("Ground")))
+            {
+                transform.Translate(new Vector2(1 * speed, 0));
+            }
+            else
+                currentDirection = Direction.Left;
+        }
+        if (currentDirection == Direction.Left)
+        {
+            if (Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(-1.2f, -0.6f), LayerMask.GetMask("Ground")))
+            {
+                transform.Translate(new Vector2(-1 * speed, 0));
+            }
+            else
+                currentDirection = Direction.Right;
+        }
+        if (currentDirection == Direction.Player)
+        {
+            var dir = (player.transform.position - transform.position).normalized;
+
+            transform.Translate(new Vector2(dir.x, 0)* speed, 0);
+        }
+
+            //Debug.DrawLine(transform.position, (Vector2)transform.position + new Vector2(1.2f, -0.6f), Color.yellow);
+        }
 
     // Update is called once per frame
     void Update()
     {
         
+
     }
 
     public void Explode()
@@ -34,35 +94,61 @@ public class creeperController : MonoBehaviour
 
     IEnumerator Explosion()
     {
-        yield return new WaitForSeconds(delayBeforeBoom);
-        spriteRenderer.enabled = false;
+        currentDirection = Direction.Player;
+        speed = agroSpeed;
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2.5f);
+        yield return new WaitForSeconds(delayBeforeBoom);
+
+        if (isKilled)
+            yield break;
+
+        spriteRenderer.enabled = false;
+        particleBoom.Emit(50);
+        collider2D.enabled = false;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, boomRadius);
+
         foreach (var collider in colliders)
         {
             var rb = collider.GetComponent<Rigidbody2D>();
 
             if (rb != null)
             {
-                //rb add explosion force 2d
-                //rb.Add
+                rb.AddExplosionForce(boomForce, this.transform.position, boomRadius);
+
+                if (rb.gameObject.tag == "Player")
+                {
+                    stateSO.moneyCurrent -= dmg;
+                    player.GetComponent<playerController>().particleBlood.Emit((int)dmg);
+                }
             }
         }
-
-        particleBoom.Emit(50);
+        isKilled = true;
+        CounterTrigger();
         Destroy(gameObject, 1);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Dash")
+        if (collision.gameObject.tag == "Dash" & isTriggered == false)
         {
-            stateSO.moneyCurrent += dmg;
-            stateSO.mobsCurrentCounter--;
-            particleBlood.Emit(45);
+            isTriggered = true;
+            isKilled = true;
             GetComponent<Collider2D>().enabled = false;
+            stateSO.moneyCurrent += dmg;
+            CounterTrigger();
+            particleBlood.Emit(45);
             gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
             Destroy(gameObject, 1);
         }
+    }
+
+    void CounterTrigger()
+    {
+        if (isCounted)
+            return;
+
+        isCounted = true;
+        stateSO.mobsCurrentCounter--;
     }
 }

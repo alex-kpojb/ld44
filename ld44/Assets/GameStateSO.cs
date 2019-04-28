@@ -16,6 +16,9 @@ public class GameStateSO : ScriptableObject
     float dashSpeedDefault = 18f;
 
     public GameObject prefabMelee;
+    public GameObject prefabTurret;
+    public GameObject prefabCreeper;
+
     public GameObject prefabBonus;
     public GameObject prefabBullet;
 
@@ -30,13 +33,15 @@ public class GameStateSO : ScriptableObject
     public float pauseBeforeSpawnMax = 0.9f;
 
     public float mobsMaxScene = 25f;
-    public float mobsSpawnedScene = 0;
+    public float mobsMeleeSpawned = 0;
+    public float mobsTurretSpawned = 0;
+    public float mobsCreeperSpawned = 0;
     public float mobsCurrentCounter = 0;
 
     public int currentWave = 0;
 
     public List<float> mobsMeleeTestWave = new List<float>();
-    public List<float> mobsRangeTestWave = new List<float>();
+    public List<float> mobsTurretTestWave = new List<float>();
     public List<float> mobsCreeperTestWave = new List<float>();
 
     //Player settings
@@ -62,7 +67,10 @@ public class GameStateSO : ScriptableObject
     {
         moneyCurrent = 500;
         sceneCurrent = 0;
-        mobsSpawnedScene = 0;
+        mobsMeleeSpawned = 0;
+        mobsTurretSpawned = 0;
+        mobsCreeperSpawned = 0;
+        mobsCurrentCounter = 0;
         mobsCurrentCounter = 0;
         currentWave = 0; //0-2
 
@@ -78,7 +86,10 @@ public class GameStateSO : ScriptableObject
     {
         moneyCurrent = moneyDefault;
         sceneCurrent = sceneDefault;
-        mobsSpawnedScene = 0;
+        mobsMeleeSpawned = 0;
+        mobsTurretSpawned = 0;
+        mobsCreeperSpawned = 0;
+        mobsCurrentCounter = 0;
         mobsCurrentCounter = 0;
         currentWave = 0;
 
@@ -90,3 +101,5 @@ public class GameStateSO : ScriptableObject
         dashSpeed = dashSpeedDefault;
     }
 }
+
+
