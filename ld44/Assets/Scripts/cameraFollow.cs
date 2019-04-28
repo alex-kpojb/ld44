@@ -6,6 +6,13 @@ public class cameraFollow : MonoBehaviour
 {
     Transform playerTransform;
     float speed = .2f;
+
+    public float minX = 0;
+    public float minY = 0;
+
+    public float maxX = 1;
+    public float maxY = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +24,8 @@ public class cameraFollow : MonoBehaviour
         transform.position = Vector3.Lerp(
             transform.position, 
             new Vector3
-                (Mathf.Clamp(playerTransform.position.x, -1.1f, 1.1f), 
-                Mathf.Clamp(playerTransform.position.y,- 3, 8),
+                (Mathf.Clamp(playerTransform.position.x, minX, maxX), 
+                Mathf.Clamp(playerTransform.position.y, minY, maxY),
                 -10),
             speed);
     }

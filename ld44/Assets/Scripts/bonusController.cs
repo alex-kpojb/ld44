@@ -28,6 +28,12 @@ public class bonusController : MonoBehaviour
         value = b.value;
     }
 
+    private void Update()
+    {
+        var newRotation = Time.deltaTime * 180;
+        transform.RotateAround(transform.position, Vector3.up, newRotation);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" || collision.tag == "Dash")
