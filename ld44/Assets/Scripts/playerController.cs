@@ -11,6 +11,7 @@ public class playerController : MonoBehaviour
     Rigidbody2D rb;
     Collider2D collider2D;
     SpriteRenderer spriteRenderer;
+    public bool freeze;
 
     /*
     float jumpForce = 800f;
@@ -55,7 +56,7 @@ public class playerController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !freeze)
         {
             if (avialableJumps > 0)
             {
@@ -66,10 +67,10 @@ public class playerController : MonoBehaviour
         }
 
         //rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * walkForce, rb.velocity.y));
-
+        if(!freeze)
         transform.Translate(Input.GetAxisRaw("Horizontal") * stateSO.walkForce, 0, 0);
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !freeze)
         {
             if (dashAvialable > 0)
             {
