@@ -9,14 +9,15 @@ public class chestCobtroller : MonoBehaviour
     public ParticleSystem particleSystem;
     public GameStateSO stateSO;
 
-    public float price = 197;
-
     Collider2D collider2D;
+    Animator animator;
 
     bool isPlayerNear = false;
     void Start()
     {
         collider2D = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+        textPrice.text = $"${stateSO.chestPrice}";
     }
 
     // Update is called once per frame
@@ -26,14 +27,9 @@ public class chestCobtroller : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                collider2D.enabled = false;
-                isPlayerNear = false;
-                textPrice.enabled = false;
+                StartCoroutine(OpenChest());
 
-                particleSystem.Emit(45);
-
-                stateSO.moneyCurrent -= price;
-                Instantiate(stateSO.prefabBonus, transform.position + new Vector3(0, 0.85f,0), Quaternion.identity);
+                
             }
         }
     }
@@ -54,5 +50,20 @@ public class chestCobtroller : MonoBehaviour
             isPlayerNear = false;
             textPrice.enabled = false;
         }
+    }
+
+    IEnumerator OpenChest()
+    {
+        animator.SetTrigger("Open");
+        collider2D.enabled = false;
+        isPlayerNear = false;
+        textPrice.enabled = false;
+
+        particleSystem.Emit(45);
+
+        stateSO.moneyCurrent -= stateSO.chestPrice;
+        yield return new WaitForSeconds(0.8f);
+        Instantiate(stateSO.prefabBonus, transform.position + new Vector3(0, 0.85f, 0), Quaternion.identity);
+        yield return null;
     }
 }

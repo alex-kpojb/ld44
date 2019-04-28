@@ -27,6 +27,8 @@ public class GameStateSO : ScriptableObject
 
     //another settings
 
+    public float chestPrice = 190;
+
     //testScene
     public float pauseBeforeWave = 1f;
     public float pauseBeforeSpawnMin = 0.2f;
@@ -73,6 +75,7 @@ public class GameStateSO : ScriptableObject
         mobsCurrentCounter = 0;
         mobsCurrentCounter = 0;
         currentWave = 0; //0-2
+        chestPrice = 221;
 
         jumpForce = 800f;
         maxJumps = 2;
@@ -92,6 +95,7 @@ public class GameStateSO : ScriptableObject
         mobsCurrentCounter = 0;
         mobsCurrentCounter = 0;
         currentWave = 0;
+        chestPrice = 190;
 
         jumpForce = jumpForceDefault;
         maxJumps = maxJumpsDefault;

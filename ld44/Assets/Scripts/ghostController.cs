@@ -15,23 +15,31 @@ public class ghostController : MonoBehaviour
     bool isTriggered = false;
 
     GameObject player;
-
+    Animator animator;
+    SpriteRenderer spriteRenderer;
 
     private void OnEnable()
     {
-        speed = Random.Range(speed - 1.2f, speed + (0.8f * stateSO.currentWave));
+        speed = Random.Range(speed - 1.2f, speed + (0.8f * (stateSO.currentWave + 1)));
     }
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindObjectOfType<playerController>().gameObject;
         collider2D = GetComponent<Collider2D>();
+        animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector2 estimatedVector = (Vector2)player.transform.position - (Vector2)transform.position;
+
+        if (estimatedVector.magnitude > 0.1)
+        {
+            spriteRenderer.flipX = (estimatedVector.normalized.x > 0) ? true : false;
+        }
 
         if (estimatedVector.magnitude > 0.3)
         {
@@ -53,11 +61,7 @@ public class ghostController : MonoBehaviour
         Rigidbody2D collisionRb = collision.gameObject.GetComponent<Rigidbody2D>();
         if (collision.tag == "Player")
         {
-            stateSO.moneyCurrent -= dmg;
-            Vector2[] hitVectors = new Vector2[] { Vector2.left, Vector2.right};
-            Vector2 hitForce = hitVectors[Random.Range(0,2)];
-            player.GetComponent<Rigidbody2D>().AddForce(hitForce * dmg * 10);
-            player.GetComponent<playerController>().particleBlood.Emit((int)dmg);
+            StartCoroutine(Attack());
         }
     }
 
@@ -70,7 +74,7 @@ public class ghostController : MonoBehaviour
             stateSO.mobsCurrentCounter--;
             EmitParticle();
             collider2D.enabled = false;
-            gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
+            gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.clear;
             Destroy(gameObject,1);
         }
     }
@@ -78,5 +82,17 @@ public class ghostController : MonoBehaviour
     void EmitParticle()
     {
         particle.Emit(25);
+    }
+
+    IEnumerator Attack()
+    {
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.03f);
+        stateSO.moneyCurrent -= dmg;
+        Vector2[] hitVectors = new Vector2[] { Vector2.left, Vector2.right };
+        Vector2 hitForce = hitVectors[Random.Range(0, 2)];
+        player.GetComponent<Rigidbody2D>().AddForce(hitForce * dmg * 10);
+        player.GetComponent<playerController>().particleBlood.Emit((int)dmg);
+        yield return null;
     }
 }

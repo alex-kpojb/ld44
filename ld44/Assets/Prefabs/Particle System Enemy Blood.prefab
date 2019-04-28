@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7973998635634168506, guid: 86a71c9210fdb344ca8a0968ab8e8bc7,
         type: 3}
       propertyPath: m_Name
-      value: Particle System Variant
+      value: Particle System Enemy Blood
       objectReference: {fileID: 0}
     - target: {fileID: 4721672073281211507, guid: 86a71c9210fdb344ca8a0968ab8e8bc7,
         type: 3}
@@ -160,6 +160,16 @@ PrefabInstance:
     - target: {fileID: 4721672073281211507, guid: 86a71c9210fdb344ca8a0968ab8e8bc7,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].probability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721672073281211507, guid: 86a71c9210fdb344ca8a0968ab8e8bc7,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721672073281211507, guid: 86a71c9210fdb344ca8a0968ab8e8bc7,
+        type: 3}
+      propertyPath: UVModule.enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1574946113803776968, guid: 86a71c9210fdb344ca8a0968ab8e8bc7,

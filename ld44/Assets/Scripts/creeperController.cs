@@ -8,12 +8,13 @@ public class creeperController : MonoBehaviour
     public GameObject agroGO;
     public ParticleSystem particleBoom;
     public ParticleSystem particleBlood;
+    public ParticleSystem particleBoomSprited;
 
     public float dmg = 40;
     public float speed = 0.05f;
     public float delayBeforeBoom = 1f;
     public float agroRadius = 2f;
-    public float agroSpeed = 0.08f;
+    float agroSpeed;
     public float boomRadius = 5f;
     public float boomForce = 2000f;
 
@@ -26,6 +27,8 @@ public class creeperController : MonoBehaviour
     bool isCounted = false;
 
     Direction currentDirection;
+    
+
 
     enum Direction
     {
@@ -36,7 +39,9 @@ public class creeperController : MonoBehaviour
 
     private void OnEnable()
     {
-        speed = Random.Range(speed - 0.01f, speed + (0.05f * stateSO.currentWave));
+        speed = Random.Range(speed - 0.01f, speed + (0.05f * (stateSO.currentWave+1)));
+        agroSpeed = (float)(speed + (speed * 0.7));
+        currentDirection = Direction.Right;
     }
     void Start()
     {
@@ -52,9 +57,11 @@ public class creeperController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Debug.DrawLine(transform.position, (Vector2)transform.position + new Vector2(0.6f, -1f), Color.yellow);
+
         if (currentDirection == Direction.Right)
         {
-            if (Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(1.2f, -0.6f), LayerMask.GetMask("Ground")))
+            if (Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(0.6f, -1f), LayerMask.GetMask("Ground")))
             {
                 transform.Translate(new Vector2(1 * speed, 0));
             }
@@ -63,7 +70,7 @@ public class creeperController : MonoBehaviour
         }
         if (currentDirection == Direction.Left)
         {
-            if (Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(-1.2f, -0.6f), LayerMask.GetMask("Ground")))
+            if (Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(-0.6f, -1f), LayerMask.GetMask("Ground")))
             {
                 transform.Translate(new Vector2(-1 * speed, 0));
             }
@@ -77,13 +84,29 @@ public class creeperController : MonoBehaviour
             transform.Translate(new Vector2(dir.x, 0)* speed, 0);
         }
 
-            //Debug.DrawLine(transform.position, (Vector2)transform.position + new Vector2(1.2f, -0.6f), Color.yellow);
+            
         }
 
     // Update is called once per frame
     void Update()
     {
-        
+        switch (currentDirection)
+        {
+            case Direction.Left: spriteRenderer.flipX = true; break;
+            case Direction.Right: spriteRenderer.flipX = false; break;
+            case Direction.Player:
+                {
+                    Vector2 estimatedVector = (Vector2)player.transform.position - (Vector2)transform.position;
+
+                    if (estimatedVector.magnitude > 0.1)
+                    {
+                        spriteRenderer.flipX = (estimatedVector.normalized.x < 0) ? true : false;
+                    }
+                }
+                ; break;
+        }
+
+
 
     }
 
@@ -103,6 +126,7 @@ public class creeperController : MonoBehaviour
             yield break;
 
         spriteRenderer.enabled = false;
+        particleBoomSprited.Emit(1);
         particleBoom.Emit(50);
         collider2D.enabled = false;
 

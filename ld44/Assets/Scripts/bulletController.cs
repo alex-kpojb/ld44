@@ -13,7 +13,7 @@ public class bulletController : MonoBehaviour
 
     private void OnEnable()
     {
-        bulletSpeed = Random.Range(bulletSpeed - 0.03f, bulletSpeed + (0.05f * stateSO.currentWave));
+        bulletSpeed = Random.Range(bulletSpeed - 0.03f, bulletSpeed + (0.05f * (stateSO.currentWave + 1)));
     }
     void Start()
     {
@@ -30,6 +30,11 @@ public class bulletController : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(new Vector3(1,0,0) * bulletSpeed);
+    }
+
+    private void Update()
+    {
+        transform.Rotate(Vector3.right, Time.deltaTime * 590);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

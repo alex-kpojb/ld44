@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour
 
     Rigidbody2D rb;
     Collider2D collider2D;
+    SpriteRenderer spriteRenderer;
 
     /*
     float jumpForce = 800f;
@@ -34,6 +35,7 @@ public class playerController : MonoBehaviour
         rb.freezeRotation = true;
 
         collider2D = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         avialableJumps = stateSO.maxJumps;
         dashAvialable = stateSO.dashMax;
@@ -87,7 +89,10 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
-
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0)
+        {
+            spriteRenderer.flipX = (Input.GetAxis("Horizontal") < 0) ? true : false;
+        }
     }
 
     IEnumerator Dash(Vector2 dashDirection)

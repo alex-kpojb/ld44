@@ -11,11 +11,13 @@ public class turretController : MonoBehaviour
 
     Transform playerGO;
     public Transform weaponGO;
+    public Transform bulletSpawnPoint;
 
     public float reloadDelay = 2.4f;
     //public float bulletSpeed = .15f;
 
     bool isTriggered = false;
+    Animator weaponAnimator;
 
     Coroutine coroutine;
 
@@ -23,6 +25,7 @@ public class turretController : MonoBehaviour
     {
         playerGO = FindObjectOfType<playerController>().gameObject.transform;
         coroutine = StartCoroutine(AimAndFight());
+        weaponAnimator = GetComponentsInChildren<Animator>()[1];
     }
 
     // Update is called once per frame
@@ -53,7 +56,8 @@ public class turretController : MonoBehaviour
         {
             yield return new WaitForSeconds(reloadDelay);
 
-            Instantiate(stateSO.prefabBullet, transform.position, weaponGO.rotation);
+            weaponAnimator.SetTrigger("Attack");
+            Instantiate(stateSO.prefabBullet, bulletSpawnPoint.position, weaponGO.rotation);
             
         }
     }
