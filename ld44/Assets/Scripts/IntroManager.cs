@@ -179,15 +179,31 @@ public class IntroManager : MonoBehaviour
     }
     private void Start()
     {
+        playablePlayer.SetActive(false);
         cardNumberText.GetComponentInParent<TMP_InputField>().ActivateInputField();
     }
 
     public GameObject player;
     public GameObject fade;
-
+    public GameObject playablePlayer;
+    public GameObject checkout;
+    public GameObject fill;
     void Reveal()
     {
         player.SetActive(true);
         fade.GetComponent<Animator>().SetBool("fade", true);
+        StartCoroutine(startIntro());
+    }
+
+    IEnumerator startIntro()
+    {
+        yield return new WaitForSeconds(3);
+        playablePlayer.SetActive(true);
+        //playablePlayer.transform.position = Camera.main.ScreenToWorldPoint(player.transform.position);
+        player.SetActive(false);
+        fill.SetActive(false);
+        checkout.SetActive(false);
+        GetComponent<Animator>().SetBool("intro",true);
+        fade.SetActive(false);
     }
 }
