@@ -173,12 +173,21 @@ public class IntroManager : MonoBehaviour
     {
         if (cvc.GetComponent<TextMeshProUGUI>().text.Length >= 3)
         {
-            Debug.Log("VALMIS");
+            Reveal();
             cvc.GetComponentInParent<TMP_InputField>().DeactivateInputField();
         }
     }
     private void Start()
     {
         cardNumberText.GetComponentInParent<TMP_InputField>().ActivateInputField();
+    }
+
+    public GameObject player;
+    public GameObject fade;
+
+    void Reveal()
+    {
+        player.SetActive(true);
+        fade.GetComponent<Animator>().SetBool("fade", true);
     }
 }
