@@ -125,4 +125,60 @@ public class IntroManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public GameObject cardNumberText;
+    public GameObject date1;
+    public GameObject date2;
+    public GameObject cvc;
+    int dir = 1;
+    int prevdir = 0;
+    bool k;
+    int addon= 0;
+    public void checkInputField1()
+    {
+      //  Debug.Log(cardNumberText.GetComponent<TextMeshProUGUI>().text.Length.ToString());
+       // Debug.Log("input: " + cardNumberText.GetComponentInParent<TMP_InputField>().text);
+        if (cardNumberText.GetComponent<TextMeshProUGUI>().text.Length > 16)
+        {
+            date1.GetComponentInParent<TMP_InputField>().ActivateInputField();
+        }
+      // Debug.Log("iffissä: " + (float)(cardNumberText.GetComponentInParent<TMP_InputField>().text.Length+addon) / 5);
+        if ((cardNumberText.GetComponentInParent<TMP_InputField>().text.Length-addon) / 5 >= dir)
+        {
+            if (k) return;
+            k = true;
+            cardNumberText.GetComponentInParent<TMP_InputField>().MoveTextEnd(false);
+            cardNumberText.GetComponentInParent<TMP_InputField>().text  += "-";
+            cardNumberText.GetComponentInParent<TMP_InputField>().MoveTextEnd(false);
+            addon++;
+            // Debug.Log(cardNumberText.GetComponent<TextMeshProUGUI>().text);
+            dir++;
+        }
+        k = false;
+    }
+    public void checkInputField2()
+    {
+        if (date1.GetComponent<TextMeshProUGUI>().text.Length >= 2)
+        {
+            date2.GetComponentInParent<TMP_InputField>().ActivateInputField();
+        }      
+    }
+    public void checkInputField3()
+    {
+        if (date2.GetComponent<TextMeshProUGUI>().text.Length >= 2)
+        {
+            cvc.GetComponentInParent<TMP_InputField>().ActivateInputField();
+        }     
+    }
+    public void checkInputField4()
+    {
+        if (cvc.GetComponent<TextMeshProUGUI>().text.Length >= 3)
+        {
+            Debug.Log("VALMIS");
+            cvc.GetComponentInParent<TMP_InputField>().DeactivateInputField();
+        }
+    }
+    private void Start()
+    {
+        cardNumberText.GetComponentInParent<TMP_InputField>().ActivateInputField();
+    }
 }

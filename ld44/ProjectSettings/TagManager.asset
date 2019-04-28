@@ -17,9 +17,9 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
-  - 
+  - EnemyPhysical
+  - Player
+  - Visibility
   - 
   - 
   - 

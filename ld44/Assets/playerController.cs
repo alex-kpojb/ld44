@@ -73,11 +73,11 @@ public class playerController : MonoBehaviour
             {
                 dashAvialable--;
                 var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 dashVector = mousePosition - transform.position;
+                Vector2 dashDirection = mousePosition - transform.position;
 
                 
                 if (!isDashing)
-                    StartCoroutine(Dash(dashVector.normalized));
+                    StartCoroutine(Dash(dashDirection.normalized));
                 
             }
         }
@@ -90,11 +90,16 @@ public class playerController : MonoBehaviour
 
     }
 
-    IEnumerator Dash(Vector3 dashDirection)
+    IEnumerator Dash(Vector2 dashDirection)
     {
+        
+
         isDashing = true;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Visibility"), true);
+
         var cachedGravity = rb.gravityScale;
         rb.gravityScale = 0;
+        rb.bodyType = RigidbodyType2D.Kinematic;
         this.gameObject.tag = "Dash";
         particleDash.Emit(25);
 
@@ -102,10 +107,15 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(stateSO.dashTime);
         rb.velocity = Vector2.zero;
 
+        rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = cachedGravity;
         this.gameObject.tag = "Player";
 
         isDashing = false;
+
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Visibility"), false);
+
+
         yield return null;
     }
 
