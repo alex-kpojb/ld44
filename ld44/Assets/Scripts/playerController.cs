@@ -11,6 +11,7 @@ public class playerController : MonoBehaviour
     Rigidbody2D rb;
     Collider2D collider2D;
     SpriteRenderer spriteRenderer;
+    Animator animator;
 
     /*
     float jumpForce = 800f;
@@ -28,6 +29,9 @@ public class playerController : MonoBehaviour
 
     bool isDashing = false;
     bool isGrounded = false;
+
+    int playerLayer;
+    int groundLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +40,13 @@ public class playerController : MonoBehaviour
 
         collider2D = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         avialableJumps = stateSO.maxJumps;
         dashAvialable = stateSO.dashMax;
+
+        playerLayer = LayerMask.NameToLayer("Player");
+        groundLayer = LayerMask.NameToLayer("Ground");
     }
 
 
@@ -65,9 +73,10 @@ public class playerController : MonoBehaviour
             }
         }
 
-        //rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * walkForce, rb.velocity.y));
-
         transform.Translate(Input.GetAxisRaw("Horizontal") * stateSO.walkForce, 0, 0);
+
+        print($"{rb.velocity.magnitude}");
+        animator.SetBool("isWalk", (Mathf.Abs(Input.GetAxisRaw("Horizontal"))>0 & isGrounded) ? true : false);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -97,27 +106,32 @@ public class playerController : MonoBehaviour
 
     IEnumerator Dash(Vector2 dashDirection)
     {
-        
-
+        animator.SetTrigger("Dash");
+        //animator.SetBool("isDashStart", true);
         isDashing = true;
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Visibility"), true);
+        Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
+        
 
         var cachedGravity = rb.gravityScale;
+
         rb.gravityScale = 0;
-        rb.bodyType = RigidbodyType2D.Kinematic;
         this.gameObject.tag = "Dash";
         particleDash.Emit(25);
 
-        rb.velocity = dashDirection * stateSO.dashSpeed;
+        rb.velocity = dashDirection * 40;//stateSO.dashSpeed;
         yield return new WaitForSeconds(stateSO.dashTime);
+
+        animator.SetBool("isDashStart", false);
+        animator.SetBool("isDashEnd", true);
         rb.velocity = Vector2.zero;
 
-        rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = cachedGravity;
         this.gameObject.tag = "Player";
 
         isDashing = false;
 
+        Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Visibility"), false);
 
 
