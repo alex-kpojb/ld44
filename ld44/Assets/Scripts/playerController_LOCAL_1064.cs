@@ -12,7 +12,6 @@ public class playerController : MonoBehaviour
     Collider2D collider2D;
     SpriteRenderer spriteRenderer;
     Animator animator;
-    public bool freeze;
 
     /*
     float jumpForce = 800f;
@@ -64,7 +63,7 @@ public class playerController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && !freeze)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (avialableJumps > 0)
             {
@@ -74,13 +73,12 @@ public class playerController : MonoBehaviour
             }
         }
 
-        //rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * walkForce, rb.velocity.y));
-        if(!freeze)
         transform.Translate(Input.GetAxisRaw("Horizontal") * stateSO.walkForce, 0, 0);
 
         print($"{rb.velocity.magnitude}");
         animator.SetBool("isWalk", (Mathf.Abs(Input.GetAxisRaw("Horizontal"))>0 & isGrounded) ? true : false);
-        if (Input.GetKeyDown(KeyCode.Mouse0)&& !freeze)
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (dashAvialable > 0)
             {
@@ -118,11 +116,10 @@ public class playerController : MonoBehaviour
         var cachedGravity = rb.gravityScale;
 
         rb.gravityScale = 0;
-        
         this.gameObject.tag = "Dash";
         particleDash.Emit(25);
 
-        rb.velocity = dashDirection * stateSO.dashSpeed;
+        rb.velocity = dashDirection * 40;//stateSO.dashSpeed;
         yield return new WaitForSeconds(stateSO.dashTime);
 
         animator.SetBool("isDashStart", false);

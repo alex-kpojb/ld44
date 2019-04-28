@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour
             }
         }
     }
-    private void PauseGame()
+    void PauseGame()
     {
         Time.timeScale = 0;
         pausePanel.SetActive(true);

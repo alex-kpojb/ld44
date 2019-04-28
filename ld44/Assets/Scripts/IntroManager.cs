@@ -140,8 +140,9 @@ public class IntroManager : MonoBehaviour
         if (cardNumberText.GetComponent<TextMeshProUGUI>().text.Length > 16)
         {
             date1.GetComponentInParent<TMP_InputField>().ActivateInputField();
+            return;
         }
-      // Debug.Log("iffissä: " + (float)(cardNumberText.GetComponentInParent<TMP_InputField>().text.Length+addon) / 5);
+        // Debug.Log("iffissä: " + (float)(cardNumberText.GetComponentInParent<TMP_InputField>().text.Length+addon) / 5);
         if ((cardNumberText.GetComponentInParent<TMP_InputField>().text.Length-addon) / 5 >= dir)
         {
             if (k) return;
@@ -179,6 +180,12 @@ public class IntroManager : MonoBehaviour
     }
     private void Start()
     {
+        PlayerPrefs.SetInt("1", 1);
+        PlayerPrefs.SetInt("2", 1);
+        PlayerPrefs.SetInt("3", 1);
+        PlayerPrefs.SetInt("4", 1);
+        PlayerPrefs.SetInt("5", 1);
+        PlayerPrefs.SetInt("6", 1);
         playablePlayer.SetActive(false);
         cardNumberText.GetComponentInParent<TMP_InputField>().ActivateInputField();
     }
