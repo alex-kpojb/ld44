@@ -46,6 +46,7 @@ public class bonusController : MonoBehaviour
         }
     }
 
+    /*
     void ApplyBonus(string name, float value)
     {
         switch (name)
@@ -58,4 +59,5 @@ public class bonusController : MonoBehaviour
             case "dashSpeed":stateSO.dashSpeed += value; break;
         }
     }
+    */
 }
