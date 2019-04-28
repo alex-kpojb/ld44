@@ -38,7 +38,7 @@ public class bonusController : MonoBehaviour
     {
         if (collision.tag == "Player" || collision.tag == "Dash")
         {
-            ApplyBonus(name, value);
+            stateSO.ApplyBonus(name, value);
             particleSystem.Emit(18);
             collider2D.enabled = false;
             spriteRenderer.color = Color.clear;

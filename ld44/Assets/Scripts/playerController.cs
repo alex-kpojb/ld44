@@ -76,10 +76,12 @@ public class playerController : MonoBehaviour
 
         //rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * walkForce, rb.velocity.y));
         if(!freeze)
-        transform.Translate(Input.GetAxisRaw("Horizontal") * stateSO.walkForce, 0, 0);
+            transform.Translate(Input.GetAxisRaw("Horizontal") * stateSO.walkForce, 0, 0);
 
         print($"{rb.velocity.magnitude}");
+
         animator.SetBool("isWalk", (Mathf.Abs(Input.GetAxisRaw("Horizontal"))>0 & isGrounded) ? true : false);
+
         if (Input.GetKeyDown(KeyCode.Mouse0)&& !freeze)
         {
             if (dashAvialable > 0)

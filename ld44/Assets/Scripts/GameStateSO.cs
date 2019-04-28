@@ -104,6 +104,20 @@ public class GameStateSO : ScriptableObject
         dashTime = dashTimeDefault;
         dashSpeed = dashSpeedDefault;
     }
+
+
+    public void ApplyBonus(string name, float value)
+    {
+        switch (name)
+        {
+            case "jumpForce": jumpForce += value; break;
+            case "maxJumps": maxJumps += value; break;
+            case "walkForce": walkForce += value; break;
+            case "dashMax": dashMax += value; break;
+            case "dashTime": dashTime += value; break;
+            case "dashSpeed": dashSpeed += value; break;
+        }
+    }
 }
 
 
