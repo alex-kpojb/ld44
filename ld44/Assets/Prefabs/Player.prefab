@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1364626516741762822, guid: c12b228125a76924297a4b7770d32f96,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,6 +153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 2871
       objectReference: {fileID: 0}
     - target: {fileID: 5055158757522310792, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
@@ -267,8 +272,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
+      propertyPath: UVModule.sprites.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.9987322
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
@@ -278,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
@@ -304,7 +314,7 @@ PrefabInstance:
         type: 3}
       propertyPath: UVModule.sprites.Array.data[0].sprite
       value: 
-      objectReference: {fileID: -4917246509589660587, guid: c12b228125a76924297a4b7770d32f96,
+      objectReference: {fileID: 7675826601332790545, guid: 0aa20ab9a8909eb4280aeb640747564a,
         type: 3}
     - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
@@ -314,7 +324,7 @@ PrefabInstance:
     - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
@@ -419,7 +429,7 @@ PrefabInstance:
     - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
       propertyPath: RotationBySpeedModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}
@@ -530,6 +540,91 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[1].probability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: -675104096977794455, guid: 0aa20ab9a8909eb4280aeb640747564a,
+        type: 3}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: -4412926668834298731, guid: 0aa20ab9a8909eb4280aeb640747564a,
+        type: 3}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: -4862007459847594908, guid: 0aa20ab9a8909eb4280aeb640747564a,
+        type: 3}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.data[4].sprite
+      value: 
+      objectReference: {fileID: -7914957615168794202, guid: 0aa20ab9a8909eb4280aeb640747564a,
+        type: 3}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.data[5].sprite
+      value: 
+      objectReference: {fileID: 2278881825021241808, guid: 0aa20ab9a8909eb4280aeb640747564a,
+        type: 3}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 2871
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.timeMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.speedRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.speedRange.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.cycles
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.frameOverTime.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.startFrame.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331484966923172147, guid: 318f6468e633cd64ab84caece7ad97af,
+        type: 3}
+      propertyPath: UVModule.startFrame.scalar
+      value: 0.9999
       objectReference: {fileID: 0}
     - target: {fileID: 5055158757522310792, guid: 318f6468e633cd64ab84caece7ad97af,
         type: 3}

@@ -130,7 +130,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 7
   m_Sprite: {fileID: 5515580552219433423, guid: c12b228125a76924297a4b7770d32f96,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -186,7 +186,6 @@ MonoBehaviour:
   particle: {fileID: 7238366604748073621}
   weaponGO: {fileID: 3848656363069606231}
   reloadDelay: 2.4
-  bulletSpeed: 20
 --- !u!50 &1754710820592330631
 Rigidbody2D:
   serializedVersion: 4
