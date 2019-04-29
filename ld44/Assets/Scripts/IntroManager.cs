@@ -289,14 +289,22 @@ public class IntroManager : MonoBehaviour
 
     IEnumerator StartIntro2()
     {
+        A = false;
+        D = false;
+        Space = false;
+        Dash = false;
+
         leftGO.SetActive(true);
         rightGO.SetActive(true);
         yield return new WaitUntil(() => A & D);
         jumpGO.SetActive(true);
-        yield return new WaitUntil(() => Space);
+        yield return new WaitUntil(() => A & D & Space);
         dashGO.SetActive(true);
-        yield return new WaitUntil(() => Dash);
+        yield return new WaitUntil(() => A & D & Space & Dash);
+        Text.text = "";
         Text.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
 
         yield return StartCoroutine(TypeText2(text_1));
         yield return StartCoroutine(TypeText2(text_2));

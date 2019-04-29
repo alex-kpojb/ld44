@@ -61,10 +61,12 @@ public class intro2man : MonoBehaviour
         rightGO.SetActive(true);
         yield return new WaitUntil(() => A & D);
         jumpGO.SetActive(true);
-        yield return new WaitUntil(() => Space);
+        yield return new WaitUntil(() => A & D & Space);
         dashGO.SetActive(true);
-        yield return new WaitUntil(() => Dash);
+        yield return new WaitUntil(() => A & D & Space & Dash);
         Text.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
 
         yield return StartCoroutine(TypeText(text1));
         yield return StartCoroutine(TypeText(text2));
