@@ -17,6 +17,7 @@ public class detection : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
             detected = true;
+            GameObject.Find("Player").GetComponent<playerController>().inshoprange = true;
         }
     }
 
@@ -26,6 +27,7 @@ public class detection : MonoBehaviour
         {
             detected = false;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+            GameObject.Find("Player").GetComponent<playerController>().inshoprange = false;
         }
     }
 }

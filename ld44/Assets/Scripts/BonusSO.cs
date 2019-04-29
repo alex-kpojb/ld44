@@ -10,6 +10,7 @@ public class BonusSO : ScriptableObject
     {
         public Sprite sprite;
         public string name;
+        public int price;
         public float value;
     }
 

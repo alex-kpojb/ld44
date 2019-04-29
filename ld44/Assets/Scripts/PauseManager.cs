@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     public GameObject pausePanel;
+    public bool inshop = false;
     void Start()
     {
-        pausePanel = GameObject.Find("Pause");
         pausePanel.SetActive(false);
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape ))
+        if (Input.GetKeyDown(KeyCode.Escape) && !inshop)
         {
             if (!pausePanel.activeSelf)
             {

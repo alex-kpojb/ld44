@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class shopManagerScript : MonoBehaviour
 {
     public GameObject cam;
-
+    public BonusSO BS;
+    public GameStateSO GSSO;
     public GameObject walkspeed;
     public GameObject dashSpeed;
     public GameObject jumpforce;
@@ -15,6 +16,22 @@ public class shopManagerScript : MonoBehaviour
     public GameObject shopHighlight;
     public GameObject Player;
     public GameObject pubble;
+    public TextMeshProUGUI item_name;
+    public TextMeshProUGUI item_price;
+    public TextMeshProUGUI item_description;
+    public string walkspeed_description;
+    public string dashspeed_description;
+    public string jumpforce_description;
+    public string jumpMax_description;
+    public string dashTime_description;
+    public string dashMax_description;
+
+    public string walkspeed_name;
+    public string dashspeed_name;
+    public string jumpforce_name;
+    public string jumpMax_name;
+    public string dashTime_name;
+    public string dashMax_name;
 
     public bool shopping;
 
@@ -27,7 +44,7 @@ public class shopManagerScript : MonoBehaviour
     void Start()
     {
 
-        //REMOVE THESE
+        //REMOVE THESE ON BUILD
         PlayerPrefs.SetInt("1", 1);
         PlayerPrefs.SetInt("2", 1);
         PlayerPrefs.SetInt("3", 1);
@@ -67,18 +84,27 @@ public class shopManagerScript : MonoBehaviour
     }
     void Update()
     {
+        GameObject.Find("Menumanager").GetComponent<PauseManager>().inshop = shopping;
+        if(cooldown)
+        {
+            cooldown = false;
+        }
        // Transform tempTarget = Player.transform;
-        if (Input.GetKeyDown(KeyCode.Space) && pubble.GetComponent<detection>().detected)
+        if (Input.GetKeyDown(KeyCode.Space) && pubble.GetComponent<detection>().detected && !shopping)
         {
             shopping = true;
+            cooldown = true;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            shopping = false;
+            shopping = false;         
         }
 
         if(shopping)
         {
+            item_description.gameObject.SetActive(true);
+            item_name.gameObject.SetActive(true);
+            item_price.gameObject.SetActive(true);
             Player.GetComponent<playerController>().freeze = true;
             shopHighlight.SetActive(true);
             management();
@@ -86,6 +112,9 @@ public class shopManagerScript : MonoBehaviour
         }
         else
         {
+            item_description.gameObject.SetActive(false);
+            item_name.gameObject.SetActive(false);
+            item_price.gameObject.SetActive(false);
             Player.GetComponent<playerController>().freeze = false;
             cam.GetComponent<Animator>().SetBool("zoom", false);
             shopHighlight.SetActive(false);
@@ -100,16 +129,74 @@ public class shopManagerScript : MonoBehaviour
         shopHighlight.transform.position = target.position = GetTarget(index);
        // Debug.Log(target.position);
         moveInShop();
+        UI_manager();
         buy();
+    }
+
+    bool cooldown;
+
+    void UI_manager()
+    {
+        switch(index)
+        {
+            case 1:
+                item_description.text = walkspeed_description;
+                item_name.text = walkspeed_name;
+                item_price.text = BS.Bonuses[2].price.ToString();
+                break;
+
+            case 2:
+                item_description.text = dashspeed_description;
+                item_name.text = dashspeed_name;
+                item_price.text = BS.Bonuses[5].price.ToString();
+                break;
+
+            case 3:
+                item_description.text = jumpforce_description;
+                item_name.text = jumpforce_name;
+                item_price.text = BS.Bonuses[0].price.ToString();
+                break;
+
+            case 4:
+                item_description.text = jumpMax_description;
+                item_name.text = jumpMax_name;
+                item_price.text = BS.Bonuses[1].price.ToString();
+                break;
+
+            case 5:
+                item_description.text = dashTime_description;
+                item_name.text = dashTime_name;
+                item_price.text = BS.Bonuses[4].price.ToString();
+                break;
+
+            case 6:
+                item_description.text = dashMax_description;
+                item_name.text = dashMax_name;
+                item_price.text = BS.Bonuses[3].price.ToString();
+                break;
+
+            default:
+                item_description.text = walkspeed_description;
+                break;
+        }
     }
     void buy()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.Space) && !cooldown)
         {
             int price = getprice(index);
             // if price is under current money
-            PlayerPrefs.SetInt(index.ToString(), 0);
-            deleteBoughtItems();
+            if(price <= GSSO.moneyCurrent)
+            {
+                GSSO.moneyCurrent -= price;
+                PlayerPrefs.SetInt(index.ToString(), 0);
+                deleteBoughtItems();
+               //APPLY BOOST
+            }
+            else
+            {
+                //Playsound
+            }
         }
     }
     int getprice(int i)
@@ -118,27 +205,27 @@ public class shopManagerScript : MonoBehaviour
         switch (i)
         {
             case 1:
-                p = 0;
+                p = BS.Bonuses[2].price;
                 break;
 
             case 2:
-                p = 0;
+                p = BS.Bonuses[5].price;
                 break;
 
             case 3:
-                p = 0;
+                p = BS.Bonuses[0].price;
                 break;
 
             case 4:
-                p = 0;
+                p = BS.Bonuses[1].price;
                 break;
 
             case 5:
-                p = 0;
+                p = BS.Bonuses[4].price;
                 break;
 
             case 6:
-                p = 0;
+                p = BS.Bonuses[3].price;
                 break;
 
             default:

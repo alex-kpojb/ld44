@@ -7,7 +7,7 @@ public class playerController : MonoBehaviour
     public ParticleSystem particleDash;
     public ParticleSystem particleBlood;
     public GameStateSO stateSO;
-
+    public bool inshoprange= false;
     Rigidbody2D rb;
     Collider2D collider2D;
     SpriteRenderer spriteRenderer;
@@ -68,7 +68,7 @@ public class playerController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && !freeze && JCoolDown)
+        if (Input.GetKeyDown(KeyCode.Space) && !freeze && JCoolDown && !inshoprange)
         {
             if (avialableJumps > 0)
             {
