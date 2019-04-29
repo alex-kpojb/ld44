@@ -72,7 +72,8 @@ public class playerController : MonoBehaviour
         {
             if (avialableJumps > 0)
             {
-                animator.SetBool("jump", true);
+                //animator.SetBool("jump", true);
+                animator.SetTrigger("jumpTrigger");
                 StartCoroutine(jumpCoolDown());
                 avialableJumps--;
                 rb.AddForce(Vector2.up * stateSO.jumpForce);
