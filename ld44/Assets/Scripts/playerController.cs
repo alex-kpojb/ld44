@@ -160,7 +160,7 @@ public class playerController : MonoBehaviour
     public float Yoffset;
     void checkGrounded()
     {
-        /* ContactFilter2D contactFilter2D = new ContactFilter2D();
+         ContactFilter2D contactFilter2D = new ContactFilter2D();
          contactFilter2D.layerMask = LayerMask.GetMask("Ground");
          contactFilter2D.useLayerMask = true;
 
@@ -168,10 +168,13 @@ public class playerController : MonoBehaviour
 
          collider2D.OverlapCollider(contactFilter2D, results);
 
-         isGrounded = (collider2D.OverlapCollider(contactFilter2D, results) > 0) ? true : false;*/
+         isGrounded = (collider2D.OverlapCollider(contactFilter2D, results) > 0) ? true : false;
+
+        /*
         Vector2 end = new Vector2(transform.position.x, transform.position.y - Yoffset);
         Debug.DrawLine(transform.position, end);
         isGrounded = Physics2D.Linecast(transform.position, end, LayerMask.GetMask("Ground"));
+        */
     }
 
     IEnumerator jumpCoolDown()
