@@ -14,4 +14,5 @@ public class menuManager : MonoBehaviour
     {
         Application.Quit();
     }
+    
 }

@@ -22,7 +22,7 @@ public class IntroManager : MonoBehaviour
     public string text9 = "";
     public string text10 = "";
     public string text11 = "";
-
+/*
     public void call1()
     {
         textField.text = "";
@@ -102,6 +102,7 @@ public class IntroManager : MonoBehaviour
         text1 = "";
         StartCoroutine(TypeText(fieldtext));
     }
+    */
 
 
     IEnumerator TypeText(string message)
@@ -152,6 +153,27 @@ public class IntroManager : MonoBehaviour
         if (index == 3)
         {
             cvc.GetComponentInParent<TMP_InputField>().ActivateInputField();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            leftGO.SetActive(false);
+            A = true;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            rightGO.SetActive(false);
+            D = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpGO.SetActive(false);
+            Space = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            dashGO.SetActive(false);
+            Dash = true;
         }
     }
     public void checkInputField1()
@@ -212,6 +234,12 @@ public class IntroManager : MonoBehaviour
         PlayerPrefs.SetInt("6", 1);
         playablePlayer.SetActive(false);
         cardNumberText.GetComponentInParent<TMP_InputField>().ActivateInputField();
+
+        Text.gameObject.SetActive(false);
+        leftGO.SetActive(false);
+        rightGO.SetActive(false);
+        jumpGO.SetActive(false);
+        dashGO.SetActive(false);
     }
 
     public GameObject player;
@@ -230,12 +258,63 @@ public class IntroManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         playablePlayer.SetActive(true);
-        //playablePlayer.transform.position = Camera.main.ScreenToWorldPoint(player.transform.position);
         index++;
         player.SetActive(false);
         fill.SetActive(false);
         checkout.SetActive(false);
         GetComponent<Animator>().SetBool("intro",true);
         fade.SetActive(false);
+        StartCoroutine(StartIntro2());
+    }
+
+    public float letterPause2 = 0.05f;
+    public float phrasePause = 2.5f;
+
+    public string text_1 = "Kill enemies - raise money";
+    public string text_2 = "Buy bonuses with money";
+    public string text_3 = "Zero money means DEATH!";
+    public string text_4 = "Are you ready?!?";
+
+    public TMP_Text Text;
+    public GameObject leftGO;
+    public GameObject rightGO;
+    public GameObject jumpGO;
+    public GameObject dashGO;
+
+    bool A = false;
+    bool D = false;
+    bool Space = false;
+    bool Dash = false;
+
+
+    IEnumerator StartIntro2()
+    {
+        leftGO.SetActive(true);
+        rightGO.SetActive(true);
+        yield return new WaitUntil(() => A & D);
+        jumpGO.SetActive(true);
+        yield return new WaitUntil(() => Space);
+        dashGO.SetActive(true);
+        yield return new WaitUntil(() => Dash);
+        Text.gameObject.SetActive(true);
+
+        yield return StartCoroutine(TypeText2(text_1));
+        yield return StartCoroutine(TypeText2(text_2));
+        yield return StartCoroutine(TypeText2(text_3));
+        yield return StartCoroutine(TypeText2(text_4));
+        SceneManager.LoadScene(2);
+        yield return null;
+    }
+
+    IEnumerator TypeText2(string message)
+    {
+        Text.text = "";
+        foreach (char letter in message.ToCharArray())
+        {
+            Text.text += letter;
+            yield return 0;
+            yield return new WaitForSeconds(letterPause2);
+        }
+        yield return new WaitForSeconds(phrasePause);
     }
 }
