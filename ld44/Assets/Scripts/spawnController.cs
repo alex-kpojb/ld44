@@ -13,6 +13,11 @@ public class spawnController : MonoBehaviour
     {
         stateSO.currentWave = 0;
 
+        stateSO.mobsCurrentCounter = 0;
+        stateSO.mobsMeleeSpawned = 0;
+        stateSO.mobsTurretSpawned = 0;
+        stateSO.mobsCreeperSpawned = 0;
+
         SpawnersGO = GameObject.FindGameObjectsWithTag("Spawner");
 
         foreach (var item in SpawnersGO)
@@ -43,8 +48,8 @@ public class spawnController : MonoBehaviour
                 StartCoroutine(SpawnCreeper());
 
                 if (stateSO.mobsMeleeSpawned >= stateSO.mobsMeleeTestWave[stateSO.currentWave]
-                    & stateSO.mobsMeleeSpawned >= stateSO.mobsTurretTestWave[stateSO.currentWave]
-                    & stateSO.mobsMeleeSpawned >= stateSO.mobsCreeperTestWave[stateSO.currentWave])
+                    & stateSO.mobsTurretSpawned >= stateSO.mobsTurretTestWave[stateSO.currentWave]
+                    & stateSO.mobsCreeperSpawned >= stateSO.mobsCreeperTestWave[stateSO.currentWave])
                 {
                     while (stateSO.mobsCurrentCounter > 0)
                         yield return null;
