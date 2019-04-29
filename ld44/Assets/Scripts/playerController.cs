@@ -15,6 +15,8 @@ public class playerController : MonoBehaviour
     TrailRenderer trailRenderer;
     public bool freeze;
 
+    public AudioClip jump;
+    public AudioClip grounded;
     /*
     float jumpForce = 800f;
     float maxJumps = 2;
@@ -54,10 +56,13 @@ public class playerController : MonoBehaviour
     }
 
 
-
+    bool lastGrounded;
     private void FixedUpdate()
     {
-
+        Debug.Log("lastgrounded: " + lastGrounded);
+        Debug.Log("isgrounded: " + isGrounded);
+        
+       
 
         if (isGrounded) 
         {
@@ -167,14 +172,17 @@ public class playerController : MonoBehaviour
          Collider2D[] results = new Collider2D[1];
 
          collider2D.OverlapCollider(contactFilter2D, results);
-
+        lastGrounded = isGrounded;
          isGrounded = (collider2D.OverlapCollider(contactFilter2D, results) > 0) ? true : false;
-
-        /*
+        if(lastGrounded != isGrounded && isGrounded)
+        {
+            GetComponent<AudioSource>().PlayOneShot(grounded);
+        }
+        
         Vector2 end = new Vector2(transform.position.x, transform.position.y - Yoffset);
         Debug.DrawLine(transform.position, end);
         isGrounded = Physics2D.Linecast(transform.position, end, LayerMask.GetMask("Ground"));
-        */
+        
     }
 
     IEnumerator jumpCoolDown()

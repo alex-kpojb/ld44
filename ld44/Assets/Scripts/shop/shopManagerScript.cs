@@ -39,7 +39,9 @@ public class shopManagerScript : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     public Transform target;
 
-    
+    public AudioClip buyAudio;
+    public AudioClip not_enough_money;
+    public List<int> boughtItems;
 
     void Start()
     {
@@ -51,35 +53,42 @@ public class shopManagerScript : MonoBehaviour
         PlayerPrefs.SetInt("4", 1);
         PlayerPrefs.SetInt("5", 1);
         PlayerPrefs.SetInt("6", 1);
-
+        boughtItems.Add(7);
         deleteBoughtItems();
     }
 
     void deleteBoughtItems()
     {
+        Debug.Log(index);
        if(PlayerPrefs.GetInt("1") == 0)
         {
             walkspeed.SetActive(false);
+            boughtItems.Add(1);
         }
         if (PlayerPrefs.GetInt("2") == 0)
         {
             dashSpeed.SetActive(false);
+            boughtItems.Add(2);
         }
         if (PlayerPrefs.GetInt("3") == 0)
         {
             jumpforce.SetActive(false);
+            boughtItems.Add(3);
         }
         if (PlayerPrefs.GetInt("4") == 0)
         {
             jumpMax.SetActive(false);
+            boughtItems.Add(4); 
         }
         if (PlayerPrefs.GetInt("5") == 0)
         {
             dashTime.SetActive(false);
+            boughtItems.Add(5);
         }
         if (PlayerPrefs.GetInt("6") == 0)
         {
             dashMax.SetActive(false);
+            boughtItems.Add(6);
         }
     }
     void Update()
@@ -180,14 +189,20 @@ public class shopManagerScript : MonoBehaviour
                 break;
         }
     }
+    
     void buy()
     {
         if(Input.GetKeyDown(KeyCode.Space) && !cooldown)
         {
             int price = getprice(index);
             // if price is under current money
+            if(boughtItems.Contains(index))
+            {
+                return;
+            }
             if(price <= GSSO.moneyCurrent)
             {
+               // GameObject.Find("AudioController").GetComponent<AudioSource>().PlayOneShot(buyAudio);
                 GSSO.moneyCurrent -= price;
                 PlayerPrefs.SetInt(index.ToString(), 0);
                 deleteBoughtItems();
@@ -195,6 +210,7 @@ public class shopManagerScript : MonoBehaviour
             }
             else
             {
+             //   GameObject.Find("AudioController").GetComponent<AudioSource>().PlayOneShot(not_enough_money);
                 //Playsound
             }
         }

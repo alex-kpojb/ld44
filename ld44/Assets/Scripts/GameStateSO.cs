@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameStateSO : ScriptableObject
 {
     //default
-    float moneyDefault = 0;
+    float moneyDefault = 100;
     float sceneDefault = 0;
     float jumpForceDefault = 800f;
     float maxJumpsDefault = 1;
