@@ -67,7 +67,7 @@ public class GameStateSO : ScriptableObject
 
     void Cheat()
     {
-        moneyCurrent = 500;
+        moneyCurrent = 10;
         sceneCurrent = 0;
         mobsMeleeSpawned = 0;
         mobsTurretSpawned = 0;
@@ -126,7 +126,7 @@ public class GameStateSO : ScriptableObject
         else {
             moneyCurrent = 0;
 
-            Time.timeScale = 0.5f;
+            SceneController.instance.GameOver();
         }
     }
 
