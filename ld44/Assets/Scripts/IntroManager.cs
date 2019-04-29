@@ -310,7 +310,8 @@ public class IntroManager : MonoBehaviour
         yield return StartCoroutine(TypeText2(text_2));
         yield return StartCoroutine(TypeText2(text_3));
         yield return StartCoroutine(TypeText2(text_4));
-        SceneManager.LoadScene(2);
+        //SceneManager.LoadScene(2);
+        SceneController.instance.NextScene();
         yield return null;
     }
 
