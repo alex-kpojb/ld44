@@ -1,36 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class menuManager : MonoBehaviour
 {
-    public GameObject pausePanel;
-    void Start()
+    public void Play()
     {
-        pausePanel.SetActive(false);
+        SceneManager.LoadScene(1);
     }
-    void Update()
+
+    public void Quit()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (!pausePanel.activeInHierarchy)
-            {
-                PauseGame();
-            }
-            if (pausePanel.activeInHierarchy)
-            {
-                ContinueGame();
-            }
-        }
-    }
-    void PauseGame()
-    {
-        Time.timeScale = 0;
-        pausePanel.SetActive(true);
-    }
-    public void ContinueGame()
-    {
-        Time.timeScale = 1;
-        pausePanel.SetActive(false);
+        Application.Quit();
     }
 }

@@ -132,7 +132,28 @@ public class IntroManager : MonoBehaviour
     int dir = 1;
     int prevdir = 0;
     bool k;
+    int index;
     int addon= 0;
+
+    private void Update()
+    {
+        if(index == 0)
+        {
+            cardNumberText.GetComponentInParent<TMP_InputField>().ActivateInputField();
+        }
+        if(index == 1)
+        {
+            date1.GetComponentInParent<TMP_InputField>().ActivateInputField();
+        }
+        if (index == 2)
+        {
+            date2.GetComponentInParent<TMP_InputField>().ActivateInputField();
+        }
+        if (index == 3)
+        {
+            cvc.GetComponentInParent<TMP_InputField>().ActivateInputField();
+        }
+    }
     public void checkInputField1()
     {
       //  Debug.Log(cardNumberText.GetComponent<TextMeshProUGUI>().text.Length.ToString());
@@ -140,6 +161,7 @@ public class IntroManager : MonoBehaviour
         if (cardNumberText.GetComponent<TextMeshProUGUI>().text.Length > 16)
         {
             date1.GetComponentInParent<TMP_InputField>().ActivateInputField();
+            index++;
             return;
         }
         // Debug.Log("iffissä: " + (float)(cardNumberText.GetComponentInParent<TMP_InputField>().text.Length+addon) / 5);
@@ -161,6 +183,7 @@ public class IntroManager : MonoBehaviour
         if (date1.GetComponent<TextMeshProUGUI>().text.Length >= 2)
         {
             date2.GetComponentInParent<TMP_InputField>().ActivateInputField();
+            index++;
         }      
     }
     public void checkInputField3()
@@ -168,6 +191,7 @@ public class IntroManager : MonoBehaviour
         if (date2.GetComponent<TextMeshProUGUI>().text.Length >= 2)
         {
             cvc.GetComponentInParent<TMP_InputField>().ActivateInputField();
+            index++;
         }     
     }
     public void checkInputField4()
@@ -207,6 +231,7 @@ public class IntroManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         playablePlayer.SetActive(true);
         //playablePlayer.transform.position = Camera.main.ScreenToWorldPoint(player.transform.position);
+        index++;
         player.SetActive(false);
         fill.SetActive(false);
         checkout.SetActive(false);

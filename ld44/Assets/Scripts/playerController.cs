@@ -34,6 +34,7 @@ public class playerController : MonoBehaviour
 
     int playerLayer;
     int groundLayer;
+    bool JCoolDown = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,20 +58,22 @@ public class playerController : MonoBehaviour
     private void FixedUpdate()
     {
 
-        checkGrounded();
 
-        if (isGrounded)
+        if (isGrounded) 
         {
+            animator.SetBool("jump", false);
+            // animator.SetBool("jump", false);
             avialableJumps = stateSO.maxJumps;
             dashAvialable = stateSO.dashMax;
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && !freeze)
+        if (Input.GetKeyDown(KeyCode.Space) && !freeze && JCoolDown)
         {
             if (avialableJumps > 0)
             {
-                StartCoroutine(detectMiddleJump());
+                animator.SetBool("jump", true);
+                StartCoroutine(jumpCoolDown());
                 avialableJumps--;
                 rb.AddForce(Vector2.up * stateSO.jumpForce);
                 particleDash.Emit(25);
@@ -81,9 +84,9 @@ public class playerController : MonoBehaviour
         if (!freeze)
             transform.Translate(Input.GetAxisRaw("Horizontal") * stateSO.walkForce, 0, 0);
 
-        print($"{rb.velocity.magnitude}");
-
-        animator.SetBool("isWalk", (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 & isGrounded) ? true : false);
+        //print($"{rb.velocity.magnitude}");
+        if (!freeze)
+            animator.SetBool("isWalk", (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 & isGrounded) ? true : false);
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && !freeze)
         {
@@ -105,7 +108,9 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0)
+        animator.SetBool("grounded", isGrounded);
+        checkGrounded();
+        if (!freeze && Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0)
         {
             spriteRenderer.flipX = (Input.GetAxis("Horizontal") < 0) ? true : false;
         }
@@ -151,42 +156,30 @@ public class playerController : MonoBehaviour
 
         yield return null;
     }
-
+    public float Yoffset;
     void checkGrounded()
     {
-        ContactFilter2D contactFilter2D = new ContactFilter2D();
-        contactFilter2D.layerMask = LayerMask.GetMask("Ground");
-        contactFilter2D.useLayerMask = true;
+        /* ContactFilter2D contactFilter2D = new ContactFilter2D();
+         contactFilter2D.layerMask = LayerMask.GetMask("Ground");
+         contactFilter2D.useLayerMask = true;
 
-        Collider2D[] results = new Collider2D[1];
+         Collider2D[] results = new Collider2D[1];
 
-        collider2D.OverlapCollider(contactFilter2D, results);
+         collider2D.OverlapCollider(contactFilter2D, results);
 
-        isGrounded = (collider2D.OverlapCollider(contactFilter2D, results) > 0) ? true : false;
+         isGrounded = (collider2D.OverlapCollider(contactFilter2D, results) > 0) ? true : false;*/
+        Vector2 end = new Vector2(transform.position.x, transform.position.y - Yoffset);
+        Debug.DrawLine(transform.position, end);
+        isGrounded = Physics2D.Linecast(transform.position, end, LayerMask.GetMask("Ground"));
     }
 
-    IEnumerator detectMiddleJump()
+    IEnumerator jumpCoolDown()
     {
-        animator.SetBool("isJumpStart", true);
-        animator.SetBool("isJumpMiddle", false);
-        animator.SetBool("isJumpEnd", false);
-        yield return new WaitUntil(()=>rb.velocity.y < 2);
-        //Now we are almost at the max height
+        JCoolDown = false;
+        yield return new WaitForSeconds(0.2f);
         
-        StartCoroutine(detectEndJump());
-        yield return null;
+            JCoolDown= true;
+        
     }
-
-    IEnumerator detectEndJump()
-    {
-        yield return new WaitUntil(()=>rb.velocity.y > 2);
-        //Now we are falling down
-        animator.SetBool("isJumpMiddle", true);
-        animator.SetBool("isJumpStart", false);
-
-        yield return new WaitUntil(() => isGrounded);
-        animator.SetBool("isJumpMiddle", false);
-        animator.SetBool("isJumpEnd", true);
-        yield return null;
-    }
+    
 }

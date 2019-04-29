@@ -98,7 +98,7 @@ public class shopManagerScript : MonoBehaviour
     void management()
     {
         shopHighlight.transform.position = target.position = GetTarget(index);
-        Debug.Log(target.position);
+       // Debug.Log(target.position);
         moveInShop();
         buy();
     }
