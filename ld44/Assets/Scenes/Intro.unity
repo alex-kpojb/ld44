@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textField: {fileID: 248976984}
-  letterPause: 0.1
+  letterPause: 0.05
   typeSound1: {fileID: 0}
   typeSound2: {fileID: 0}
   dashTarget: {fileID: 1435067670}
