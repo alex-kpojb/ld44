@@ -4197,6 +4197,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1378607324626019273, guid: 5fc8a3eb942755a4f8316fe12bb707fe,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 5279418397520083027, guid: 5fc8a3eb942755a4f8316fe12bb707fe,
         type: 3}
       propertyPath: jump
@@ -4207,11 +4212,6 @@ PrefabInstance:
       propertyPath: grounded
       value: 
       objectReference: {fileID: 8300000, guid: 597b772a05808aa4da4a03a652d31b53, type: 3}
-    - target: {fileID: 1378607324626019273, guid: 5fc8a3eb942755a4f8316fe12bb707fe,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 16
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fc8a3eb942755a4f8316fe12bb707fe, type: 3}
 --- !u!1001 &639767982
@@ -5836,7 +5836,7 @@ PrefabInstance:
     - target: {fileID: 171758385560483955, guid: 9150a33b384acac419218501b41cced8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 171758385560483953, guid: 9150a33b384acac419218501b41cced8,
         type: 3}

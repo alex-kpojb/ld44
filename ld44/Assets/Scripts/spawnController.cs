@@ -11,6 +11,8 @@ public class spawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stateSO.currentWave = 0;
+
         SpawnersGO = GameObject.FindGameObjectsWithTag("Spawner");
 
         foreach (var item in SpawnersGO)
@@ -58,12 +60,15 @@ public class spawnController : MonoBehaviour
                     }
                     else
                     {
+                        
                         break;
                     }
                 }
             }
             yield return null;
         }
+        SceneController.instance.NextScene();
+        yield return null;
     }
 
     IEnumerator SpawnMewlee()

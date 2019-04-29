@@ -8,6 +8,7 @@ using TMPro;
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance = null;
+    public GameStateSO stateSO;
 
     public Image image1;
     public Image image2;
@@ -65,6 +66,8 @@ public class SceneController : MonoBehaviour
     public void NextScene()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
+        
+
         switch (currentScene)
         {
             //mainMenu

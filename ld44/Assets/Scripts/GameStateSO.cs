@@ -67,7 +67,7 @@ public class GameStateSO : ScriptableObject
 
     void Cheat()
     {
-        moneyCurrent = 10;
+        moneyCurrent = 1000;
         sceneCurrent = 0;
         mobsMeleeSpawned = 0;
         mobsTurretSpawned = 0;
@@ -87,7 +87,7 @@ public class GameStateSO : ScriptableObject
 
     void Reset()
     {
-        moneyCurrent = moneyDefault;
+        moneyCurrent = 200;
         sceneCurrent = sceneDefault;
         mobsMeleeSpawned = 0;
         mobsTurretSpawned = 0;

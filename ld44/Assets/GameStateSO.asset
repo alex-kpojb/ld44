@@ -35,20 +35,20 @@ MonoBehaviour:
   mobsCurrentCounter: 0
   currentWave: 0
   mobsMeleeTestWave:
-  - 10
-  - 20
-  - 30
+  - 1
+  - 1
+  - 1
   mobsTurretTestWave:
-  - 2
-  - 5
-  - 20
+  - 1
+  - 1
+  - 1
   mobsCreeperTestWave:
-  - 5
-  - 10
-  - 50
+  - 1
+  - 1
+  - 1
   jumpForce: 800
   maxJumps: 2
   walkForce: 0.2
   dashMax: 2
   dashTime: 0.1
-  dashSpeed: 25
+  dashSpeed: 27
