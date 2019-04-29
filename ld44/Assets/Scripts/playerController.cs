@@ -176,7 +176,7 @@ public class playerController : MonoBehaviour
          isGrounded = (collider2D.OverlapCollider(contactFilter2D, results) > 0) ? true : false;
         if(lastGrounded != isGrounded && isGrounded)
         {
-            GetComponent<AudioSource>().PlayOneShot(grounded);
+          //  GetComponent<AudioSource>().PlayOneShot(grounded);
         }
         
         Vector2 end = new Vector2(transform.position.x, transform.position.y - Yoffset);
