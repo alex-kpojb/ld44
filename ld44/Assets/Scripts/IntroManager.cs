@@ -306,12 +306,17 @@ public class IntroManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        yield return StartCoroutine(TypeText2(text_1));
-        yield return StartCoroutine(TypeText2(text_2));
-        yield return StartCoroutine(TypeText2(text_3));
-        yield return StartCoroutine(TypeText2(text_4));
-        //SceneManager.LoadScene(2);
-        SceneController.instance.NextScene();
+        if(!doing)
+        {
+            doing = true;
+            yield return StartCoroutine(TypeText2(text_1));
+            yield return StartCoroutine(TypeText2(text_2));
+            yield return StartCoroutine(TypeText2(text_3));
+            yield return StartCoroutine(TypeText2(text_4));
+            SceneController.instance.NextScene();
+            doing = false;
+        }
+        //SceneManager.LoadScene(2);       
         yield return null;
     }
 
@@ -326,4 +331,5 @@ public class IntroManager : MonoBehaviour
         }
         yield return new WaitForSeconds(phrasePause);
     }
+    static bool doing = false;
 }
