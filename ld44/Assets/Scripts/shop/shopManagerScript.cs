@@ -194,9 +194,10 @@ public class shopManagerScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && !cooldown)
         {
-            int price = getprice(index);
+            //int price = getprice(index);
+            float price = GSSO.chestPrice;
             // if price is under current money
-            if(boughtItems.Contains(index))
+            if (boughtItems.Contains(index))
             {
                 return;
             }
@@ -206,7 +207,8 @@ public class shopManagerScript : MonoBehaviour
                 GSSO.moneyCurrent -= price;
                 PlayerPrefs.SetInt(index.ToString(), 0);
                 deleteBoughtItems();
-               //APPLY BOOST
+                //APPLY BOOST
+                GSSO.ApplyBonus("jumpForce", 0.01f);
             }
             else
             {
