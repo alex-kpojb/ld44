@@ -142,7 +142,7 @@ public class creeperController : MonoBehaviour
 
                 if (rb.gameObject.tag == "Player")
                 {
-                    stateSO.moneyCurrent -= dmg;
+                    stateSO.reduceMoney(dmg);
                     player.GetComponent<playerController>().particleBlood.Emit((int)dmg);
                 }
             }

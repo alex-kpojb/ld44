@@ -118,6 +118,18 @@ public class GameStateSO : ScriptableObject
             case "dashSpeed": dashSpeed += value; break;
         }
     }
+
+    public void reduceMoney(float value) {
+
+        if ((moneyCurrent - value) > 0)
+            moneyCurrent -= value;
+        else {
+            moneyCurrent = 0;
+
+            Time.timeScale = 0.5f;
+        }
+    }
+
 }
 
 

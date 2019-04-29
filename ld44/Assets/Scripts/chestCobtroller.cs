@@ -61,7 +61,7 @@ public class chestCobtroller : MonoBehaviour
 
         particleSystem.Emit(45);
 
-        stateSO.moneyCurrent -= stateSO.chestPrice;
+        stateSO.reduceMoney(stateSO.chestPrice);
         yield return new WaitForSeconds(0.8f);
         Instantiate(stateSO.prefabBonus, transform.position + new Vector3(0, 0.85f, 0), Quaternion.identity);
         yield return null;

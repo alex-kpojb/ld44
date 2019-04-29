@@ -25,7 +25,7 @@ public class pikesController : MonoBehaviour
         Rigidbody2D collisionRb = collision.gameObject.GetComponent<Rigidbody2D>();
         if (collision.tag == "Player")
         {
-            stateSO.moneyCurrent -= dmg;
+            stateSO.reduceMoney(dmg);
             Vector2[] hitVectors = new Vector2[] { Vector2.left, Vector2.right };
             Vector2 hitForce = hitVectors[Random.Range(0, 2)];
             player.GetComponent<Rigidbody2D>().AddForce(hitForce * dmg * 60);

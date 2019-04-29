@@ -88,7 +88,7 @@ public class ghostController : MonoBehaviour
     {
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds(0.03f);
-        stateSO.moneyCurrent -= dmg;
+        stateSO.reduceMoney(dmg);
         Vector2[] hitVectors = new Vector2[] { Vector2.left, Vector2.right };
         Vector2 hitForce = hitVectors[Random.Range(0, 2)];
         player.GetComponent<Rigidbody2D>().AddForce(hitForce * dmg * 10);
