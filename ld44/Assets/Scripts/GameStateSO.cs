@@ -14,6 +14,7 @@ public class GameStateSO : ScriptableObject
     float dashMaxDefault = 1;
     float dashTimeDefault = 0.1f;
     float dashSpeedDefault = 18f;
+    float chestPriceDefault = 221f;
 
     public GameObject prefabMelee;
     public GameObject prefabTurret;
@@ -95,8 +96,8 @@ public class GameStateSO : ScriptableObject
         mobsCurrentCounter = 0;
         mobsCurrentCounter = 0;
         currentWave = 0;
-        chestPrice = 190;
 
+        chestPrice = chestPriceDefault;
         jumpForce = jumpForceDefault;
         maxJumps = maxJumpsDefault;
         walkForce = walkForceDefault;

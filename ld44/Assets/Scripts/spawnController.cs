@@ -72,6 +72,7 @@ public class spawnController : MonoBehaviour
             }
             yield return null;
         }
+        stateSO.chestPrice *= 2;
         SceneController.instance.NextScene();
         yield return null;
     }
