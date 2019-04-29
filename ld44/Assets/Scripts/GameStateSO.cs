@@ -126,7 +126,7 @@ public class GameStateSO : ScriptableObject
         else {
             moneyCurrent = 0;
 
-            Time.timeScale = 0.5f;
+            SceneController.instance.GameOver();
         }
     }
 
