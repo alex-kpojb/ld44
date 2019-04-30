@@ -133,7 +133,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 7
   m_Sprite: {fileID: 2731795287329381114, guid: 978fd952355c17d45b60c87775389125,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -191,7 +191,7 @@ MonoBehaviour:
   particleBoomSprited: {fileID: 6034682082189294282}
   dmg: 40
   speed: 0.05
-  delayBeforeBoom: 3
+  delayBeforeBoom: 1.5
   agroRadius: 2
   boomRadius: 5
   boomForce: 2000

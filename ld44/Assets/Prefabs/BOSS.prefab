@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 10
+  playerDmg: 1
   speed: 5
   particles: {fileID: 7089082932653045867}
   stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
@@ -417,7 +418,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_Sprite: {fileID: 7029460233597887086, guid: 95ccea225e3fa784d989f04cb39db1e6,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
