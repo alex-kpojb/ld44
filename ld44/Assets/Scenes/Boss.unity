@@ -14128,5 +14128,10 @@ PrefabInstance:
       propertyPath: playerDmg
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 46428326120401481, guid: 357e0a523c3169d4f843597479b71d3d,
+        type: 3}
+      propertyPath: dmg
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 357e0a523c3169d4f843597479b71d3d, type: 3}
