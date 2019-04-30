@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4cc08c46190e4742931795f75985197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
 --- !u!4 &443081209
 Transform:
   m_ObjectHideFlags: 0
@@ -712,9 +713,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 381460193707665876, guid: c37c347486bc4f94d89875b99706b75a,
+    m_HighlightedSprite: {fileID: 7224362914464355237, guid: c37c347486bc4f94d89875b99706b75a,
       type: 3}
-    m_PressedSprite: {fileID: 381460193707665876, guid: c37c347486bc4f94d89875b99706b75a,
+    m_PressedSprite: {fileID: 7224362914464355237, guid: c37c347486bc4f94d89875b99706b75a,
       type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
@@ -762,7 +763,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 3227423666646646395, guid: c37c347486bc4f94d89875b99706b75a,
+  m_Sprite: {fileID: -1639677675256097642, guid: c37c347486bc4f94d89875b99706b75a,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0

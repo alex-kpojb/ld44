@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7565345115362240574}
+  - component: {fileID: 7565345115362240575}
   - component: {fileID: 7565345115362240573}
   - component: {fileID: 7565345115362240568}
-  - component: {fileID: 7565345115362240575}
   m_Layer: 0
   m_Name: Bonus
   m_TagString: Untagged
@@ -34,6 +34,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7565345115362240575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7565345115362240572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4296e04099283504ca27eeb7232c2b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonusSO: {fileID: 11400000, guid: 8a4e99cd39c5e814484adf0af103f28b, type: 2}
+  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
+  particleSystem: {fileID: 1627432848967029267}
+  name: 
+  value: 0
 --- !u!212 &7565345115362240573
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -109,23 +126,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7565345115362240575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7565345115362240572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4296e04099283504ca27eeb7232c2b22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bonusSO: {fileID: 11400000, guid: 8a4e99cd39c5e814484adf0af103f28b, type: 2}
-  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
-  particleSystem: {fileID: 1627432848967029267}
-  name: 
-  value: 0
 --- !u!1001 &1955153387507643438
 PrefabInstance:
   m_ObjectHideFlags: 0

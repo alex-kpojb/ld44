@@ -31,9 +31,9 @@ public class GameStateSO : ScriptableObject
     public float chestPrice = 190;
 
     //testScene
-    public float pauseBeforeWave = 1f;
-    public float pauseBeforeSpawnMin = 0.2f;
-    public float pauseBeforeSpawnMax = 0.9f;
+    public float pauseBeforeWave = 3f;
+    public float pauseBeforeSpawnMin = 1f;
+    public float pauseBeforeSpawnMax = 3f;
 
     public float mobsMaxScene = 25f;
     public float mobsMeleeSpawned = 0;
@@ -87,7 +87,7 @@ public class GameStateSO : ScriptableObject
     }
 
 
-    void Reset()
+    public void Reset()
     {
         sceneCurrent = 0;
         mobsMeleeSpawned = 0;

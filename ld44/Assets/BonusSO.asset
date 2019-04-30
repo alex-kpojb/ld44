@@ -16,29 +16,29 @@ MonoBehaviour:
   - sprite: {fileID: 3410918491446568398, guid: dc942681905261a40af0996d5a34399f,
       type: 3}
     name: jumpForce
-    price: 700
+    price: 659
     value: 100
   - sprite: {fileID: 4928671260392873470, guid: dc942681905261a40af0996d5a34399f,
       type: 3}
     name: maxJumps
-    price: 800
+    price: 789
     value: 1
   - sprite: {fileID: 4536303970436761004, guid: dc942681905261a40af0996d5a34399f,
       type: 3}
     name: walkForce
-    price: 500
+    price: 449
     value: 0.04
   - sprite: {fileID: -7415331047110381915, guid: dc942681905261a40af0996d5a34399f,
       type: 3}
     name: dashMax
-    price: 1000
+    price: 998
     value: 1
   - sprite: {fileID: 621560852509794982, guid: dc942681905261a40af0996d5a34399f, type: 3}
     name: dashTime
-    price: 900
+    price: 879
     value: 0.02
   - sprite: {fileID: -499814844998443567, guid: dc942681905261a40af0996d5a34399f,
       type: 3}
     name: dashSpeed
-    price: 600
+    price: 579
     value: 2

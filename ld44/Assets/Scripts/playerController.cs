@@ -7,6 +7,10 @@ public class playerController : MonoBehaviour
     public ParticleSystem particleDash;
     public ParticleSystem particleBlood;
     public GameStateSO stateSO;
+
+    public Transform topleftGrounCheck;
+    public Transform bottomRightGroundCheck;
+
     public bool inshoprange= false;
     Rigidbody2D rb;
     Collider2D collider2D;
@@ -36,6 +40,9 @@ public class playerController : MonoBehaviour
 
     int playerLayer;
     int groundLayer;
+
+    LayerMask groundMask;
+
     bool JCoolDown = true;
     // Start is called before the first frame update
     void Start()
@@ -53,14 +60,15 @@ public class playerController : MonoBehaviour
 
         playerLayer = LayerMask.NameToLayer("Player");
         groundLayer = LayerMask.NameToLayer("Ground");
+        groundMask = LayerMask.GetMask("Ground");
     }
 
 
     bool lastGrounded;
     private void FixedUpdate()
     {
-        Debug.Log("lastgrounded: " + lastGrounded);
-        Debug.Log("isgrounded: " + isGrounded);
+        //Debug.Log("lastgrounded: " + lastGrounded);
+        //Debug.Log("isgrounded: " + isGrounded);
         
        
 
@@ -73,7 +81,7 @@ public class playerController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && !freeze && JCoolDown && !inshoprange)
+        if (Input.GetKeyDown(KeyCode.Space) && !freeze /*&& JCoolDown*/ && !inshoprange)
         {
             if (avialableJumps > 0)
             {
@@ -163,26 +171,14 @@ public class playerController : MonoBehaviour
         yield return null;
     }
     public float Yoffset;
+
+    private void OnDrawGizmos() {
+        Gizmos.DrawLine(topleftGrounCheck.position, bottomRightGroundCheck.position);
+    }
+
     void checkGrounded()
     {
-         ContactFilter2D contactFilter2D = new ContactFilter2D();
-         contactFilter2D.layerMask = LayerMask.GetMask("Ground");
-         contactFilter2D.useLayerMask = true;
-
-         Collider2D[] results = new Collider2D[1];
-
-         collider2D.OverlapCollider(contactFilter2D, results);
-        lastGrounded = isGrounded;
-         isGrounded = (collider2D.OverlapCollider(contactFilter2D, results) > 0) ? true : false;
-        if(lastGrounded != isGrounded && isGrounded)
-        {
-          //  GetComponent<AudioSource>().PlayOneShot(grounded);
-        }
-        
-        Vector2 end = new Vector2(transform.position.x, transform.position.y - Yoffset);
-        Debug.DrawLine(transform.position, end);
-        isGrounded = Physics2D.Linecast(transform.position, end, LayerMask.GetMask("Ground"));
-        
+        isGrounded = Physics2D.OverlapArea(topleftGrounCheck.position, bottomRightGroundCheck.position, groundMask);
     }
 
     IEnumerator jumpCoolDown()

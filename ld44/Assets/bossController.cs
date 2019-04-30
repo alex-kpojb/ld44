@@ -71,12 +71,16 @@ public class bossController : MonoBehaviour
         {
             currentHP = 0;
             particles.Emit(1000);
-            GetComponent<Collider2D>().enabled = false;
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+            foreach (var collider in colliders) {
+                collider.enabled = false;
+            }
             animator.enabled = false;
             spriteRenderer.color = Color.clear;
             spriteRenderer.enabled = false;
             Destroy(gameObject, 1);
 
+            Time.timeScale=0.2f;
             SceneController.instance.NextScene();
         }
         else

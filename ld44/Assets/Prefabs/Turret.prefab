@@ -96,9 +96,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1473239314283205883}
+  - component: {fileID: 8778682673514533060}
   - component: {fileID: 1473239314283205882}
   - component: {fileID: 1473239314283205885}
-  - component: {fileID: 8778682673514533060}
   - component: {fileID: 1754710820592330631}
   - component: {fileID: 7526783385946761535}
   m_Layer: 9
@@ -125,6 +125,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8778682673514533060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473239314283205887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f778ffe394282747a79c97790dc65fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
+  dmg: 40
+  particle: {fileID: 7238366604748073621}
+  weaponGO: {fileID: 3848656363069606231}
+  bulletSpawnPoint: {fileID: 3429153362447869285}
+  reloadDelay: 2.4
 --- !u!212 &1473239314283205882
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -200,24 +218,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.21, y: 1.18}
   m_EdgeRadius: 0
---- !u!114 &8778682673514533060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473239314283205887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f778ffe394282747a79c97790dc65fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
-  dmg: 40
-  particle: {fileID: 7238366604748073621}
-  weaponGO: {fileID: 3848656363069606231}
-  bulletSpawnPoint: {fileID: 3429153362447869285}
-  reloadDelay: 2.4
 --- !u!50 &1754710820592330631
 Rigidbody2D:
   serializedVersion: 4

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3282875157504043102}
-  - component: {fileID: 8931989630739719994}
   - component: {fileID: 2727027005926096815}
+  - component: {fileID: 8931989630739719994}
   - component: {fileID: 7748344194352636676}
   m_Layer: 0
   m_Name: Ghost
@@ -35,22 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8931989630739719994
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3282875157504043101}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.3118301, y: 0.06}
-  serializedVersion: 2
-  m_Radius: 0.41
 --- !u!114 &2727027005926096815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +52,22 @@ MonoBehaviour:
   rotationRatio: 1
   speed: 4
   dmg: 20
+--- !u!58 &8931989630739719994
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282875157504043101}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.3118301, y: 0.06}
+  serializedVersion: 2
+  m_Radius: 0.41
 --- !u!50 &7748344194352636676
 Rigidbody2D:
   serializedVersion: 4

@@ -232,8 +232,12 @@ public class IntroManager : MonoBehaviour
         PlayerPrefs.SetInt("4", 1);
         PlayerPrefs.SetInt("5", 1);
         PlayerPrefs.SetInt("6", 1);
+
+        //activate CVC
+        index = 3;
+
         playablePlayer.SetActive(false);
-        cardNumberText.GetComponentInParent<TMP_InputField>().ActivateInputField();
+        //cardNumberText.GetComponentInParent<TMP_InputField>().ActivateInputField();
 
         Text.gameObject.SetActive(false);
         leftGO.SetActive(false);

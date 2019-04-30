@@ -66,9 +66,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7772940273729292674}
+  - component: {fileID: 4496873461995976859}
   - component: {fileID: 7734292756650685280}
   - component: {fileID: 2025645124936177310}
-  - component: {fileID: 4496873461995976859}
   - component: {fileID: 5947411772241931706}
   - component: {fileID: 2469789478163360491}
   m_Layer: 9
@@ -97,6 +97,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4496873461995976859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3930472647995237791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f314ff30aae1b6f4bb3955b7c882d130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
+  agroGO: {fileID: 7140486854649539857}
+  particleBoom: {fileID: 1511853530499797291}
+  particleBlood: {fileID: 212201315502381176}
+  particleBoomSprited: {fileID: 6034682082189294282}
+  dmg: 40
+  speed: 0.05
+  delayBeforeBoom: 1.5
+  agroRadius: 2
+  boomRadius: 5
+  boomForce: 2000
 --- !u!212 &7734292756650685280
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -172,29 +195,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4496873461995976859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3930472647995237791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f314ff30aae1b6f4bb3955b7c882d130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
-  agroGO: {fileID: 7140486854649539857}
-  particleBoom: {fileID: 1511853530499797291}
-  particleBlood: {fileID: 212201315502381176}
-  particleBoomSprited: {fileID: 6034682082189294282}
-  dmg: 40
-  speed: 0.05
-  delayBeforeBoom: 1.5
-  agroRadius: 2
-  boomRadius: 5
-  boomForce: 2000
 --- !u!50 &5947411772241931706
 Rigidbody2D:
   serializedVersion: 4

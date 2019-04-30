@@ -95,7 +95,10 @@ public class SceneController : MonoBehaviour
                     toScene(shop);
                 }; break;
             //boss
-            case 5: toScene(winnerScreen); break;
+            case 5: {
+                    ResetVars();
+                    toScene(winnerScreen);
+                }; break;
         }
     }
 
@@ -218,6 +221,8 @@ public class SceneController : MonoBehaviour
         yield return null;
     }
     IEnumerator GameOverCoroutine() {
+
+        ResetVars();
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(0.2f);
         toScene(looserScreen);
@@ -231,5 +236,21 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(value);
         yield return StartCoroutine(FadeIn());
         yield return null;
+    }
+
+    private void ResetVars() {
+        //reset boughtShopItems
+        PlayerPrefs.SetInt("1", 1);
+        PlayerPrefs.SetInt("2", 1);
+        PlayerPrefs.SetInt("3", 1);
+        PlayerPrefs.SetInt("4", 1);
+        PlayerPrefs.SetInt("5", 1);
+        PlayerPrefs.SetInt("6", 1);
+
+        isFirstLevelCOmpleted = false;
+        isSecondLevelCOmpleted = false;
+
+        isGameOver = false;
+        isGameWin = false;
     }
 }

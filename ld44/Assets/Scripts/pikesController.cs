@@ -28,7 +28,7 @@ public class pikesController : MonoBehaviour
             stateSO.reduceMoney(dmg);
             Vector2[] hitVectors = new Vector2[] { Vector2.left, Vector2.right };
             Vector2 hitForce = hitVectors[Random.Range(0, 2)];
-            player.GetComponent<Rigidbody2D>().AddForce(hitForce * dmg * 60);
+            player.GetComponent<Rigidbody2D>().AddForce(hitForce * dmg * 2);
             player.GetComponent<playerController>().particleBlood.Emit((int)dmg);
         }
     }

@@ -61,7 +61,7 @@ public class shopManagerScript : MonoBehaviour
 
     void deleteBoughtItems()
     {
-        Debug.Log(index);
+        //Debug.Log(index);
        if(PlayerPrefs.GetInt("1") == 0)
         {
             walkspeed.SetActive(false);
@@ -240,7 +240,7 @@ public class shopManagerScript : MonoBehaviour
                 break;
 
             case 4:
-                i = 3;
+                p = 1;
                 break;
 
             case 5:
@@ -248,7 +248,7 @@ public class shopManagerScript : MonoBehaviour
                 break;
 
             case 6:
-                p = 1;
+                p = 3;
                 break;
 
             default:
@@ -360,6 +360,10 @@ public class shopManagerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S) && index != 1 && index != 2 && index != 3)
         {
             index -= 3;
+        }
+
+        if (Input.anyKeyDown) {
+            Debug.Log(index);
         }
     }
     Vector2 GetTarget(int i)

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1475131489}
+  inshop: 0
 --- !u!1 &2005117190
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,10 +905,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2557916559053028669}
+  - component: {fileID: 3544978021936943419}
   - component: {fileID: 2557916559053028668}
   - component: {fileID: 2557916559053028671}
   - component: {fileID: 2557916559053028670}
-  - component: {fileID: 3544978021936943419}
   m_Layer: 5
   m_Name: Gui 1
   m_TagString: Untagged
@@ -944,6 +945,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &3544978021936943419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557916559053028665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03073684832887649affdff06ea276e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
+  textMoney: {fileID: 2557916558298767095}
+  textWave: {fileID: 7017983887684736128}
+  textcurrentMobs: {fileID: 2557916558347308552}
+  textmelee: {fileID: 2557916557812358321}
+  textturret: {fileID: 2557916557781398562}
+  textcreeper: {fileID: 2557916559335965319}
 --- !u!223 &2557916559053028668
 Canvas:
   m_ObjectHideFlags: 0
@@ -1004,25 +1024,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3544978021936943419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2557916559053028665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03073684832887649affdff06ea276e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
-  textMoney: {fileID: 2557916558298767095}
-  textWave: {fileID: 7017983887684736128}
-  textcurrentMobs: {fileID: 2557916558347308552}
-  textmelee: {fileID: 2557916557812358321}
-  textturret: {fileID: 2557916557781398562}
-  textcreeper: {fileID: 2557916559335965319}
 --- !u!1 &2557916559335965313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,12 +1457,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3731733500417692621, guid: fa8d00cf0b0da9a42954bac1b80e8499,
+    - target: {fileID: 3731733499505257374, guid: fa8d00cf0b0da9a42954bac1b80e8499,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 401168830}
-    - target: {fileID: 3731733499505257374, guid: fa8d00cf0b0da9a42954bac1b80e8499,
+    - target: {fileID: 3731733500417692621, guid: fa8d00cf0b0da9a42954bac1b80e8499,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
