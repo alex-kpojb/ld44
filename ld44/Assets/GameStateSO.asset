@@ -35,17 +35,20 @@ MonoBehaviour:
   mobsCurrentCounter: 0
   currentWave: 0
   mobsMeleeTestWave:
-  - 1
-  - 0
-  - 0
+  - 10
+  - 20
+  - 30
+  - 50
   mobsTurretTestWave:
-  - 0
-  - 0
-  - 0
+  - 2
+  - 5
+  - 10
+  - 25
   mobsCreeperTestWave:
-  - 0
-  - 0
-  - 0
+  - 2
+  - 6
+  - 12
+  - 50
   jumpForce: 800
   maxJumps: 2
   walkForce: 0.2
