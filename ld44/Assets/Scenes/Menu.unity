@@ -953,7 +953,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Alex Something
+  m_text: Alex Kpojb
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18d3724623ff8b742b628cc30d72057d, type: 2}
   m_sharedMaterial: {fileID: -8538004598326538890, guid: 18d3724623ff8b742b628cc30d72057d,

@@ -47,12 +47,14 @@ public class shopManagerScript : MonoBehaviour
     {
 
         //REMOVE THESE ON BUILD
+        /*
         PlayerPrefs.SetInt("1", 1);
         PlayerPrefs.SetInt("2", 1);
         PlayerPrefs.SetInt("3", 1);
         PlayerPrefs.SetInt("4", 1);
         PlayerPrefs.SetInt("5", 1);
         PlayerPrefs.SetInt("6", 1);
+        */
         boughtItems.Add(7);
         deleteBoughtItems();
     }

@@ -22,18 +22,18 @@ MonoBehaviour:
     type: 3}
   prefabBullet: {fileID: 8918065959105227453, guid: 38409a3d31b3ea643ae8ed36645b2c3c,
     type: 3}
-  moneyCurrent: 1000
+  moneyCurrent: 20
   sceneCurrent: 0
   chestPrice: 221
   pauseBeforeWave: 1
   pauseBeforeSpawnMin: 0.2
   pauseBeforeSpawnMax: 0.9
   mobsMaxScene: 25
-  mobsMeleeSpawned: 0
-  mobsTurretSpawned: 0
-  mobsCreeperSpawned: 0
-  mobsCurrentCounter: 0
-  currentWave: 0
+  mobsMeleeSpawned: 17
+  mobsTurretSpawned: 5
+  mobsCreeperSpawned: 6
+  mobsCurrentCounter: 19
+  currentWave: 1
   mobsMeleeTestWave:
   - 10
   - 20
@@ -51,7 +51,7 @@ MonoBehaviour:
   - 50
   jumpForce: 800
   maxJumps: 2
-  walkForce: 0.2
-  dashMax: 2
-  dashTime: 0.1
+  walkForce: 0.24000001
+  dashMax: 1
+  dashTime: 0.12
   dashSpeed: 25

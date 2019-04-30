@@ -6,14 +6,14 @@ using UnityEngine;
 public class GameStateSO : ScriptableObject
 {
     //default
-    float moneyDefault = 100;
+    float moneyDefault = 400;
     float sceneDefault = 0;
     float jumpForceDefault = 800f;
     float maxJumpsDefault = 1;
-    float walkForceDefault = 0.1f;
+    float walkForceDefault = 0.2f;
     float dashMaxDefault = 1;
-    float dashTimeDefault = 0.1f;
-    float dashSpeedDefault = 18f;
+    float dashTimeDefault = 0.12f;
+    float dashSpeedDefault = 25f;
     float chestPriceDefault = 221f;
 
     public GameObject prefabMelee;
@@ -52,13 +52,13 @@ public class GameStateSO : ScriptableObject
     public float maxJumps = 2;
     public float walkForce = 0.2f;
     public float dashMax = 2;
-    public float dashTime = 0.2f;
+    public float dashTime = 0.12f;
     public float dashSpeed = 25f;
 
     private void OnEnable()
     {
-        Cheat();
-        //Reset();
+        //Cheat();
+        Reset();
     }
 
     private void OnDisable()
@@ -84,12 +84,12 @@ public class GameStateSO : ScriptableObject
         dashMax = 2;
         dashTime = 0.1f;
         dashSpeed = 25f;
-}
+    }
+
 
     void Reset()
     {
-        moneyCurrent = 200;
-        sceneCurrent = sceneDefault;
+        sceneCurrent = 0;
         mobsMeleeSpawned = 0;
         mobsTurretSpawned = 0;
         mobsCreeperSpawned = 0;
@@ -97,6 +97,7 @@ public class GameStateSO : ScriptableObject
         mobsCurrentCounter = 0;
         currentWave = 0;
 
+        moneyCurrent = moneyDefault;
         chestPrice = chestPriceDefault;
         jumpForce = jumpForceDefault;
         maxJumps = maxJumpsDefault;
@@ -120,17 +121,18 @@ public class GameStateSO : ScriptableObject
         }
     }
 
-    public void reduceMoney(float value) {
+    public void reduceMoney(float value)
+    {
 
         if ((moneyCurrent - value) > 0)
             moneyCurrent -= value;
-        else {
+        else
+        {
             moneyCurrent = 0;
 
             SceneController.instance.GameOver();
         }
     }
-
 }
 
 
