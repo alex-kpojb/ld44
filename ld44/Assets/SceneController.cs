@@ -220,7 +220,7 @@ public class SceneController : MonoBehaviour
     IEnumerator GameOverCoroutine() {
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(0.2f);
-        toScene(1);
+        toScene(5);
         yield return null;
     }
 

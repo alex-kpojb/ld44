@@ -21,9 +21,15 @@ EditorBuildSettings:
     path: Assets/Scenes/library.unity
     guid: 6e49406d8e616cf48aad24a1f8616206
   - enabled: 1
-    path: Assets/Scenes/TestGraphicsScene.unity
-    guid: 47ac0c1ea97aa2143b31ff37ef2edc92
+    path: Assets/Scenes/GameWon.unity
+    guid: 1ae0214ab22abac48ac09e5d8b00a10e
+  - enabled: 1
+    path: Assets/Scenes/GameLost.unity
+    guid: 73150494d94ebf34a90945c3f0027287
   - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: c5789d68a9d42e247887f7eec7ccf717
+  - enabled: 0
+    path: Assets/Scenes/TestGraphicsScene.unity
+    guid: 47ac0c1ea97aa2143b31ff37ef2edc92
   m_configObjects: {}

@@ -194,8 +194,8 @@ public class shopManagerScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && !cooldown)
         {
-            //int price = getprice(index);
-            float price = GSSO.chestPrice;
+            int price = getprice(index);
+            //float price = GSSO.chestPrice;
             // if price is under current money
             if (boughtItems.Contains(index))
             {
@@ -208,7 +208,10 @@ public class shopManagerScript : MonoBehaviour
                 PlayerPrefs.SetInt(index.ToString(), 0);
                 deleteBoughtItems();
                 //APPLY BOOST
-                GSSO.ApplyBonus("jumpForce", 0.01f);
+
+                string name = getname(index);
+                int k = getSOindex(index);
+                GSSO.ApplyBonus(name, BS.Bonuses[k].value);
             }
             else
             {
@@ -216,6 +219,76 @@ public class shopManagerScript : MonoBehaviour
                 //Playsound
             }
         }
+    }
+    int getSOindex(int i)
+    {
+        int p = 0;
+        switch (i)
+        {
+            case 1:
+                p = 2;
+                break;
+
+            case 2:
+                p = 5;
+                break;
+
+            case 3:
+                p = 0;
+                break;
+
+            case 4:
+                i = 3;
+                break;
+
+            case 5:
+                p = 4;
+                break;
+
+            case 6:
+                p = 1;
+                break;
+
+            default:
+                p = 2;
+                break;
+        }
+        return p;
+    }
+    string getname(int i)
+    {
+        string p;
+        switch (i)
+        {
+            case 1:
+                p = BS.Bonuses[2].name;
+                break;
+
+            case 2:
+                p = BS.Bonuses[5].name;
+                break;
+
+            case 3:
+                p = BS.Bonuses[0].name;
+                break;
+
+            case 4:
+                p = BS.Bonuses[1].name;
+                break;
+
+            case 5:
+                p = BS.Bonuses[4].name;
+                break;
+
+            case 6:
+                p = BS.Bonuses[3].name;
+                break;
+
+            default:
+                p = BS.Bonuses[2].name;
+                break;
+        }
+        return p;
     }
     int getprice(int i)
     {
