@@ -10,6 +10,7 @@ public class IntroManager : MonoBehaviour
     public AudioClip typeSound1;
     public AudioClip typeSound2;
     public GameObject dashTarget;
+    public GameStateSO stateSO;
 
     public string text1 = "welcome my credit card";
     public string text2 = "";
@@ -232,6 +233,7 @@ public class IntroManager : MonoBehaviour
         PlayerPrefs.SetInt("4", 1);
         PlayerPrefs.SetInt("5", 1);
         PlayerPrefs.SetInt("6", 1);
+        stateSO.Reset();
 
         //activate CVC
         index = 3;

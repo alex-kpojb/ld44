@@ -352,10 +352,10 @@ RectTransform:
   m_Father: {fileID: 1864868104}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: 38}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 38}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &451213904
 MonoBehaviour:
@@ -379,8 +379,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: You Win!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18d3724623ff8b742b628cc30d72057d, type: 2}
-  m_sharedMaterial: {fileID: -8538004598326538890, guid: 18d3724623ff8b742b628cc30d72057d,
+  m_fontAsset: {fileID: 11400000, guid: 06db9b367fa22a74799e785523a067fc, type: 2}
+  m_sharedMaterial: {fileID: 8629038682275090513, guid: 06db9b367fa22a74799e785523a067fc,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -444,7 +444,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -145.05554, y: 0, z: -71.588684, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 451213904}
     characterCount: 8
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -738,10 +738,10 @@ RectTransform:
   m_Father: {fileID: 1864868104}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47, y: 106}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 106}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2071469169
 MonoBehaviour:
@@ -765,8 +765,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: The Black friday Boss is dead!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18d3724623ff8b742b628cc30d72057d, type: 2}
-  m_sharedMaterial: {fileID: -8538004598326538890, guid: 18d3724623ff8b742b628cc30d72057d,
+  m_fontAsset: {fileID: 11400000, guid: 06db9b367fa22a74799e785523a067fc, type: 2}
+  m_sharedMaterial: {fileID: 8629038682275090513, guid: 06db9b367fa22a74799e785523a067fc,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -145.05554, y: 0, z: -71.588684, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2071469169}
     characterCount: 30

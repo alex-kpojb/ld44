@@ -71,7 +71,11 @@ public class SceneController : MonoBehaviour
         switch (currentScene)
         {
             //mainMenu
-            case 0: toScene(intro); break;
+            case 0:
+                {
+                    ResetVars();
+                    toScene(intro);
+                }; break;
             //intro
             case 1: toScene(firstLevel); break;
             //shop

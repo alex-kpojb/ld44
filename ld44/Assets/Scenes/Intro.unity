@@ -506,6 +506,7 @@ MonoBehaviour:
   typeSound1: {fileID: 0}
   typeSound2: {fileID: 0}
   dashTarget: {fileID: 1435067670}
+  stateSO: {fileID: 11400000, guid: 67ee15bf4018e8a468762b4f3fddc58a, type: 2}
   text1: welcome my credit card
   text2: Let's move around
   text3: Use A and D keys to move side to side
@@ -1102,7 +1103,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1869,7 +1870,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Kill enemies - raise money
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18d3724623ff8b742b628cc30d72057d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 06db9b367fa22a74799e785523a067fc, type: 2}
   m_sharedMaterial: {fileID: -8538004598326538890, guid: 18d3724623ff8b742b628cc30d72057d,
     type: 2}
   m_fontSharedMaterials: []
@@ -1948,7 +1949,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}

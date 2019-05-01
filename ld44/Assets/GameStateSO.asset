@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   prefabBullet: {fileID: 8918065959105227453, guid: 38409a3d31b3ea643ae8ed36645b2c3c,
     type: 3}
-  moneyCurrent: 999996400
+  moneyCurrent: 395
   sceneCurrent: 0
   chestPrice: 221
   pauseBeforeWave: 1
@@ -49,9 +49,9 @@ MonoBehaviour:
   - 5
   - 9
   - 12
-  jumpForce: 900
+  jumpForce: 800
   maxJumps: 1
-  walkForce: 0.24000001
+  walkForce: 0.2
   dashMax: 2
-  dashTime: 0.14
-  dashSpeed: 27
+  dashTime: 0.12
+  dashSpeed: 25

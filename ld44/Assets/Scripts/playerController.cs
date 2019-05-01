@@ -21,17 +21,7 @@ public class playerController : MonoBehaviour
 
     public AudioClip jump;
     public AudioClip grounded;
-    /*
-    float jumpForce = 800f;
-    float maxJumps = 2;
-    
-    float walkForce = 0.2f;
 
-    float dashMax = 2;
-    
-    float dashCoolDown = 0.2f;
-    float dashSpeed = 25f;
-    */
     float avialableJumps;
     float dashAvialable;
 
@@ -67,71 +57,60 @@ public class playerController : MonoBehaviour
     bool lastGrounded;
     private void FixedUpdate()
     {
-        //Debug.Log("lastgrounded: " + lastGrounded);
-        //Debug.Log("isgrounded: " + isGrounded);
-        
-       
+        checkGrounded();
 
-        if (isGrounded) 
+        if (isGrounded)
         {
             animator.SetBool("jump", false);
-            // animator.SetBool("jump", false);
             avialableJumps = stateSO.maxJumps;
             dashAvialable = stateSO.dashMax;
         }
 
+        
 
         if (Input.GetKeyDown(KeyCode.Space) && !freeze /*&& JCoolDown*/ && !inshoprange)
         {
             if (avialableJumps > 0)
             {
-                //animator.SetBool("jump", true);
                 animator.SetTrigger("jumpTrigger");
-                StartCoroutine(jumpCoolDown());
+                //StartCoroutine(jumpCoolDown());
                 avialableJumps--;
                 rb.AddForce(Vector2.up * stateSO.jumpForce);
                 particleDash.Emit(25);
             }
         }
 
-        //rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * walkForce, rb.velocity.y));
-        if (!freeze)
-            transform.Translate(Input.GetAxisRaw("Horizontal") * stateSO.walkForce, 0, 0);
-
-        //print($"{rb.velocity.magnitude}");
-        if (!freeze)
-            animator.SetBool("isWalk", (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 & isGrounded) ? true : false);
-
         if (Input.GetKeyDown(KeyCode.Mouse0) && !freeze)
         {
             if (dashAvialable > 0)
             {
                 dashAvialable--;
-                var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 dashDirection = mousePosition - transform.position;
-
-
+                
                 if (!isDashing)
-                    StartCoroutine(Dash(dashDirection.normalized));
-
+                    StartCoroutine(Dash());
             }
         }
 
-
+        if (!freeze)
+            transform.Translate(Input.GetAxisRaw("Horizontal") * stateSO.walkForce, 0, 0);
     }
 
     void Update()
     {
         animator.SetBool("grounded", isGrounded);
-        checkGrounded();
+
         if (!freeze && Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0)
-        {
             spriteRenderer.flipX = (Input.GetAxis("Horizontal") < 0) ? true : false;
-        }
+
+        if (!freeze)
+            animator.SetBool("isWalk", (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 & isGrounded) ? true : false);
     }
 
-    IEnumerator Dash(Vector2 dashDirection)
+    IEnumerator Dash()
     {
+        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dashDirection = (mousePosition - transform.position);
+
         animator.SetTrigger("Dash");
         trailRenderer.emitting = true;
         //animator.SetBool("isDashStart", true);
@@ -148,7 +127,7 @@ public class playerController : MonoBehaviour
         this.gameObject.tag = "Dash";
         particleDash.Emit(25);
 
-        rb.velocity = dashDirection * stateSO.dashSpeed;
+        rb.velocity = dashDirection.normalized * stateSO.dashSpeed;
         yield return new WaitForSeconds(stateSO.dashTime);
 
         //animator.SetBool("isDashStart", false);
